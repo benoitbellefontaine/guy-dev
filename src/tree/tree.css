@@ -1,0 +1,115 @@
+.mainpane {
+    height:60%;
+    display:flex;
+    border:0px solid rgba(40,40,40,1);
+    border-radius: 5px;
+    padding:0 0px 5px 5px;
+    box-sizing:content-box;
+    /*background-color: paleturquoise;*/
+}
+
+.rightpane {
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.children {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background-color:rgba(140,86,75,0.9);*/
+    /*background-image: url(../assets/malgorzata-frej-EQhpvZWdr5s-unsplash.jpg);*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 5px 5px 0 0;
+    text-align: center;
+    font-size: 3vmin;
+    border-radius: 5px;
+}
+
+.rootpane {
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-size:300%;color:black;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color:rgba(255,255,255,1);
+    margin: 5px 5px 0 0;
+    border-radius: 5px;
+    text-align:center;
+}
+
+.leftpane {
+    display:flex;
+    flex-direction:column;
+    margin: 5px 5px 0 0;
+}
+
+.parentpane {
+    width:100%;
+    height:20%;
+    font-size:100%;
+    margin:0px 0px 0 0;
+    color:white;
+    background-color:rgba(255,0,0,1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.currentpane {
+    position:relative;
+    width:100%;
+    height:100%;
+    font-size:4vw;
+    margin:0px 0px 0 0;
+    color:white;
+    /*background-color:rgba(0,0,0,0.1);*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    line-height: 6vmin;
+    border-radius:5px;
+}
+
+.buttonpane {
+    position:absolute;
+    top:10px;
+    /*left:10px;*/
+    line-height:2vw;
+    font-size:2vw;
+    border-radius:5px;
+    padding:5px;
+    color:white;
+    background-color: black;
+    /*background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+}
+
+.buttonbottom {
+    width: 50%;
+    line-height: 3vmin;
+    font-size: 3vmin;
+    border-radius: 5px;
+    font-weight: 700;
+    padding: 5px;
+    color: white;
+    background: linear-gradient(to right, #FDFBFB, #EBEDEE 70%);
+}
+
+.textgradient {
+    background: linear-gradient(to right, rgb(255,127,14) 0%, rgb(64,160,64) 20%,rgb(214,69,70) 40%, rgb(148,103,189) 60%, rgb(140,86,75) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
