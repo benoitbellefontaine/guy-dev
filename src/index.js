@@ -3,12 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+import reducers from './reducers';
+
+const store = createStore(reducers);
 
 const routing = (
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>
 )
 
 ReactDOM.render(routing, document.getElementById('root'));
