@@ -25,7 +25,7 @@ import { connect } from 'react-redux';
                     margin: 3,
                     borderRadius: 10,
                     color: selected ? 'white' : 'rgba(0,0,0,0.7)',
-                    backgroundColor: selected ? 'rgb(116,184,33)' : 'rgba(0,0,0,0.1)',
+                    backgroundColor: selected ? 'rgb(116,184,33)' : 'rgba(255,255,255,0.3)',
                     //border: selected ? '2px solid rgb(116,184,33)' : '2px solid gray',
                     fontSize: '100%',
                     fontWeight: 600,

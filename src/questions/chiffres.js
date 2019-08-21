@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 /* action */
-    const secteurSelect = id => {
+    const chiffreSelect = id => {
         return {
-            type: 'SECTEUR_SELECT',
+            type: 'CHIFFRE_SELECT',
             id
         }
     }
 /* action */
 
 /* presentation */
-    /* SECTEUR presentation */
-        const SecteurItem = ({ onClick, selected, text, id }) => (
+    /* CHIFFRE presentation */
+        const ChiffreItem = ({ onClick, selected, text, id }) => (
             <li
                 onClick={onClick}
                 style={ {
@@ -31,33 +31,32 @@ import { connect } from 'react-redux';
                 }}
                 >
                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-                    <div><i className={selected ? `fas fa-check-square fa-2x` : `far fa-square fa-2x`}></i></div>
+                    <div><i className={selected ? `fas fa-check-circle fa-2x` : `far fa-circle fa-2x`}></i></div>
                     <span style={{width:'90%',margin:'0 auto',textAlign:'center'}}>{text}</span>
                     <span> </span>
                 </div>
             </li>
         )
-        SecteurItem.propTypes = {
+        ChiffreItem.propTypes = {
             onClick: PropTypes.func.isRequired,
             selected: PropTypes.bool.isRequired,
             text: PropTypes.string.isRequired
         }
 
-        const SList = ({ secteurs, onTodoClick /*, questionId*/ }) => (
+        const CList = ({ chiffres, onTodoClick }) => (
             <div style={{height:'100%'}}>
                 <h3>
-                    Indiquez le ou les secteurs d'activité de votre entreprise
+                    Quel est votre chiffre d'affaire ?
                 </h3>
                 <ul style={{width:'100%',boxSizing:'border-box',display:'flex',flexDirection:'row',flexWrap:'wrap',justifyContent:'center',padding:0}}>
-                    {secteurs.map(secteur => (
-                        <SecteurItem key={secteur.id} {...secteur} onClick={() => onTodoClick(secteur.id)} />
+                    {chiffres.map(chiffre => (
+                        <ChiffreItem key={chiffre.id} {...chiffre} onClick={() => onTodoClick(chiffre.id)} />
                     ))}
                 </ul>
             </div>
         )
-        SList.propTypes = {
-            //questionId: PropTypes.number,
-            secteurs: PropTypes.arrayOf(
+        CList.propTypes = {
+            chiffres: PropTypes.arrayOf(
                 PropTypes.shape({
                     id: PropTypes.number.isRequired,
                     selected: PropTypes.bool.isRequired,
@@ -66,33 +65,36 @@ import { connect } from 'react-redux';
             ).isRequired,
             onTodoClick: PropTypes.func.isRequired
         }
-    /* SECTEUR presentation */
+    /* CHIFFRE presentation */
 /* end presentation */
-/* container 3 : ListeDeSecteurs */
-    const getVisibleSecteurs = (secteurs, filter) => {
-        switch (filter) {
+/* container 4 : ChiffresList */
+  const getVisibleTodosChiffres = (chiffres, filter) => {
+      switch (filter) {
         case 'SHOW_SELECTED':
-            return secteurs.filter(t => t.selected)
+          return chiffres.filter(t => t.selected)
         case 'SHOW_ALL':
         default:
-            return secteurs
-        }
-    }
-    
-    const mapStateToPropsSecteur = (state, ownProps) => {
-        return {
-            secteurs: getVisibleSecteurs(state.secteurs, ownProps.filter)
-        }
-    }
+          return chiffres
+      }
+  }
      
-    const mapDispatchToPropsSecteur = dispatch => {
-        return {
+  const mapStateToPropsChiffres = (state, ownProps) => {
+      return {
+        chiffres: getVisibleTodosChiffres(state.chiffres, ownProps.filter)
+      }
+  }
+     
+  const mapDispatchToPropsChiffres = dispatch => {
+      return {
         onTodoClick: id => {
-            dispatch(secteurSelect(id));
+          dispatch(chiffreSelect(id));
         }
-        }
-    }
-    
-    const ListeDeSecteurs = connect(mapStateToPropsSecteur,mapDispatchToPropsSecteur)(SList)
-    export default ListeDeSecteurs;
-/* container 3 : ListeDeSecteurs */
+      }
+  }
+     
+  const ChiffresList = connect(
+      mapStateToPropsChiffres,
+      mapDispatchToPropsChiffres
+  )(CList)
+  export default ChiffresList;
+/* container 4 : ChiffresList */

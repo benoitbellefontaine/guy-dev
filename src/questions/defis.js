@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 
 /* action */
-    const secteurSelect = id => {
+    const defiSelect = id => {
         return {
-            type: 'SECTEUR_SELECT',
+            type: 'DEFI_SELECT',
             id
         }
     }
 /* action */
 
 /* presentation */
-    /* SECTEUR presentation */
-        const SecteurItem = ({ onClick, selected, text, id }) => (
+    /* DEFI presentation */
+        const DefiItem = ({ onClick, selected, text, id }) => (
             <li
                 onClick={onClick}
                 style={ {
@@ -37,27 +38,27 @@ import { connect } from 'react-redux';
                 </div>
             </li>
         )
-        SecteurItem.propTypes = {
+        DefiItem.propTypes = {
             onClick: PropTypes.func.isRequired,
             selected: PropTypes.bool.isRequired,
             text: PropTypes.string.isRequired
         }
 
-        const SList = ({ secteurs, onTodoClick /*, questionId*/ }) => (
+        const DList = ({ defis, onTodoClick }) => (
             <div style={{height:'100%'}}>
                 <h3>
-                    Indiquez le ou les secteurs d'activité de votre entreprise
+                    Quels sont vos plus grands défis ?
                 </h3>
                 <ul style={{width:'100%',boxSizing:'border-box',display:'flex',flexDirection:'row',flexWrap:'wrap',justifyContent:'center',padding:0}}>
-                    {secteurs.map(secteur => (
-                        <SecteurItem key={secteur.id} {...secteur} onClick={() => onTodoClick(secteur.id)} />
+                    {defis.map(defi => (
+                        <DefiItem key={defi.id} {...defi} onClick={() => onTodoClick(defi.id)} />
                     ))}
                 </ul>
             </div>
         )
-        SList.propTypes = {
+        DList.propTypes = {
             //questionId: PropTypes.number,
-            secteurs: PropTypes.arrayOf(
+            defis: PropTypes.arrayOf(
                 PropTypes.shape({
                     id: PropTypes.number.isRequired,
                     selected: PropTypes.bool.isRequired,
@@ -66,33 +67,36 @@ import { connect } from 'react-redux';
             ).isRequired,
             onTodoClick: PropTypes.func.isRequired
         }
-    /* SECTEUR presentation */
+    /* DEFI presentation */
 /* end presentation */
-/* container 3 : ListeDeSecteurs */
-    const getVisibleSecteurs = (secteurs, filter) => {
+
+/* container 3 : DefiList */
+    const getVisibleTodosDefi = (defis, filter) => {
         switch (filter) {
         case 'SHOW_SELECTED':
-            return secteurs.filter(t => t.selected)
+            return defis.filter(t => t.selected)
         case 'SHOW_ALL':
         default:
-            return secteurs
-        }
-    }
-    
-    const mapStateToPropsSecteur = (state, ownProps) => {
-        return {
-            secteurs: getVisibleSecteurs(state.secteurs, ownProps.filter)
+            return defis
         }
     }
      
-    const mapDispatchToPropsSecteur = dispatch => {
+    const mapStateToPropsDefi = (state, ownProps) => {
+        return {
+            defis: getVisibleTodosDefi(state.defis, ownProps.filter)
+        }
+    }
+     
+    const mapDispatchToPropsDefi = dispatch => {
         return {
         onTodoClick: id => {
-            dispatch(secteurSelect(id));
+            dispatch(defiSelect(id));
         }
         }
     }
     
-    const ListeDeSecteurs = connect(mapStateToPropsSecteur,mapDispatchToPropsSecteur)(SList)
-    export default ListeDeSecteurs;
-/* container 3 : ListeDeSecteurs */
+    const DefiList = connect(mapStateToPropsDefi,mapDispatchToPropsDefi)(DList)
+
+    export default DefiList;
+
+/* container 3 : DefiList */
