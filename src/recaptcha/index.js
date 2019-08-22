@@ -1,71 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { loadReCaptcha } from 'react-recaptcha-google';
+import React, { useState, useEffect, useRef } from 'react';
+import { ReCaptcha, loadReCaptcha } from 'react-recaptcha-google';
+
+import ReactCaptchaHook from 'react-recaptcha-hook';
+import ReactGoogleCaptcha from './react-google-recaptcha';
 
 function Recaptcha() {
   const [count, setCount] = useState(0);
+  const refCaptcha = useRef(null);
 
   useEffect(() => {
     loadReCaptcha();
     document.title = `Vous avez cliqué ${count} fois`;
   });
 
+  const onHandleToken = () => {
+    console.log("onHandleToken");
+  }
+
   return (
     <div>
-        <h2>Code for Invisible ReCaptcha</h2> 
-        <code>
-{/*
-// https://medium.com/codeep-io/how-to-use-google-recaptcha-with-react-38a5cd535e0d
-import React, { Component } from 'react';
-import { ReCaptcha } from 'react-recaptcha-google'
-class ExampleComponent extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
-    this.verifyCallback = this.verifyCallback.bind(this);
-  }
-  componentDidMount() {
-    if (this.captchaDemo) {
-        console.log("started, just a second...")
-        this.captchaDemo.reset();
-        this.captchaDemo.execute();
-    }
-  }
-  onLoadRecaptcha() {
-      if (this.captchaDemo) {
-          this.captchaDemo.reset();
-          this.captchaDemo.execute();
-      }
-  }
-  verifyCallback(recaptchaToken) {
-    // Here you will get the final recaptchaToken!!!  
-    console.log(recaptchaToken, "<= your recaptcha token")
-  }
-  render() {
-    return (
-      <div>
-        // You can replace captchaDemo with any ref word
-        <ReCaptcha
-            ref={(el) => {this.captchaDemo = el;}}
-            size="invisible"
-            render="explicit"
-            sitekey="your_site_key"
-            onloadCallback={this.onLoadRecaptcha}
-            verifyCallback={this.verifyCallback}
-        />
-        <code>
-          1. Add <strong>your site key</strong> in the ReCaptcha component. <br/>
-          2. Check <strong>console</strong> to see the token.
-        </code>
-      </div>
-    );
-  };
-};
-export default ExampleComponent;
-*/}
-        </code>
-        <button onClick={() => setCount(count + 1)}>
-            Cliquez ici
-        </button>
+      <h1>react-recaptcha-google</h1>
+      <ReCaptcha
+          ref={refCaptcha}
+          size="invisible"
+          size="compact"
+          size="normal"
+          render="explicit"
+          sitekey="6LeNUkAUAAAAAC8ld7Jc9NwWMWpdK6HnB8AL6u5r"
+          onloadCallback={loadReCaptcha}
+          //verifyCallback={this.verifyCallback}
+          hl="fr"
+      />
+      <h1>react-recaptcha-hook</h1>
+      <ReactCaptchaHook action="fr" sitekey="6LeNUkAUAAAAAC8ld7Jc9NwWMWpdK6HnB8AL6u5r" onToken={onHandleToken} />
+      <h1>react-google-recaptcha</h1>
+      <ReactGoogleCaptcha hl="fr" sitekey="6LeNUkAUAAAAAC8ld7Jc9NwWMWpdK6HnB8AL6u5r" />
     </div>
   );
 }
