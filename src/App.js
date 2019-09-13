@@ -41,7 +41,7 @@ function App() {
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)', overflow: 'hidden', width: '100%', height: '100%' },
     leave: { opacity: 0, transform: 'translate3d(0%,0,0)', overflow: 'hidden', width: '100%', height: '100%' },
   })
-  
+
   const margin = { top:50,right:75,bottom:50,left:75 };  
   const size = useWindowSize();
  
@@ -52,16 +52,18 @@ function App() {
 
     <div className="App" style={{overflowX:'hidden'}}>
 
-      <header className="App-header" style={{width:'100%',display:'flex',justifyContent:'space-between'}}>
-        <div>Lorem Ipsum</div>
+      <header className="App-header" style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center',justifyContent:'space-between'}}>
+        
+        <div class="buttons">
+          <button className="draw"><Link style={{color:'#e9edf1',textDecoration:'none',zIndex:1}} to='/main'>Consultants PME Outaouais</Link></button>
+        </div>
+
         <div style={{display:'flex'}}>
-          <Link to='/main'>Main</Link>
           <Link to='/cycles'>Cycles</Link>
           <Link to='/tree'>Services</Link>
           <Link to='/questions'>Q</Link>
           <Link to='/contact'>Contact</Link>
           <Link to='/contact2'>Contact2</Link>
-          <Link to='/questions2'>Q2</Link>
           <Link to='/recaptcha'>Recaptcha</Link>
           <div onClick={()=>setLanguage(state=>!state)}>{ (language) ? 'Fr' : 'En' }</div>
         </div>
@@ -99,7 +101,7 @@ function App() {
                 <Route path="/tree" render={(props) => <Tree items={data} {...props} 
                   width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
                 <Route path="/cycles" render={(props) => <Cycles {...props} 
-                    width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
+                    width={size.width*100/100} height={size.height*70/100} margin={margin} />}/>
                 <Route path="/questions2" render={(props) => <Questions2 {...props} 
                     width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
                 <Route path="/recaptcha" render={(props) => <Recaptcha {...props} 
