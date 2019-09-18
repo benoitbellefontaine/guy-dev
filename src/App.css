@@ -139,25 +139,21 @@ button::before, button::after {
   height: 100%;
 }
 
-.draw {
+.center {
   background: none;
   border: 0;
   color: #e9edf1;
-  /*box-shadow: inset 0 0 0 2px #f45e61;*/
-  /*color: #f45e61;*/
   font-weight: 700;
   position: relative;
-  /*vertical-align: middle;*/
 }
 
-.draw {
+.center {
   box-sizing: border-box;
   content: "";
-  /*width: 100%;*/
   height: 100%;
   text-decoration: none;
   font-size: 3vmin;
-  padding: 0.5vmin 0.75vmin 0.75vmin 1.25vmin;
+  padding: 0.5vmin 1.25vmin 0.75vmin 1.25vmin;
   margin: 0.5vmin;
   display: flex;
   text-align: center;
@@ -196,19 +192,50 @@ button::before, button::after {
   right: 0;
 }
 .draw:hover {
-  color: #6477b9;
+  color: #e9edf1;
 }
 .draw:hover::before, .draw:hover::after {
   width: 100%;
   height: 100%;
 }
 .draw:hover::before {
-  border-top-color: #6477b9;
-  border-right-color: #6477b9;
+  border-top-color: #e9edf1;
+  border-right-color: #e9edf1;
   transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
 }
 .draw:hover::after {
-  border-bottom-color: #6477b9;
-  border-left-color: #6477b9;
+  border-bottom-color: #e9edf1;
+  border-left-color: #e9edf1;
   transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+}
+
+.center:hover {
+  color: #6477b9;
+}
+.center::before, .center::after {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+.center::before {
+  border-top: 2px solid #e9edf1;
+  border-bottom: 2px solid #e9edf1;
+  -webkit-transform: scale3d(0, 1, 1);
+          transform: scale3d(0, 1, 1);
+}
+.center::after {
+  border-left: 2px solid #e9edf1;
+  border-right: 2px solid #e9edf1;
+  -webkit-transform: scale3d(1, 0, 1);
+          transform: scale3d(1, 0, 1);
+}
+.center:hover::before, .center:hover::after {
+  -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }

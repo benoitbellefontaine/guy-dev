@@ -55,7 +55,7 @@ function App() {
       <header className="App-header" style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center',justifyContent:'space-between'}}>
         
         <div class="buttons">
-          <button className="draw"><Link style={{color:'#e9edf1',textDecoration:'none',zIndex:1}} to='/main'>Consultants PME Outaouais</Link></button>
+          <button className="center"><Link style={{color:'#e9edf1',textDecoration:'none',zIndex:1}} to='/main'>Consultants PME Outaouais</Link></button>
         </div>
 
         <div style={{display:'flex'}}>
@@ -99,7 +99,7 @@ function App() {
                 <Route path="/questions" render={(props) => <Questions {...props}
                   width={size.width} height={size.height} />}/>
                 <Route path="/tree" render={(props) => <Tree items={data} {...props} 
-                  width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
+                  width={size.width*80/100} height={size.height*70/100} margin={margin} />}/>
                 <Route path="/cycles" render={(props) => <Cycles {...props} 
                     width={size.width*100/100} height={size.height*70/100} margin={margin} />}/>
                 <Route path="/questions2" render={(props) => <Questions2 {...props} 
