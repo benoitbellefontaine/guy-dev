@@ -28,7 +28,7 @@ const Tree = (props) => {
         from: { wrapper:'80%', iwrapper:'100%' },
         to: { 
             //o: pane ? 1 : 0, 
-            wrapper: pane ? '80%' : '60%', 
+            wrapper: pane ? '80%' : '80%', 
             iwrapper: pane ? '50%' : '100%', 
         },
     })
@@ -77,7 +77,7 @@ const Tree = (props) => {
     };
 
     return (
-        <animated.div className='mainpane' style={{ width: wrapper }}>
+        <animated.div className='mainpane' style={{ height: props.height, width: wrapper }}>
             {
                 // LEFTPANE
                 (!node.parent)

@@ -1,9 +1,9 @@
 .mainpane {
-    height:60%;
+    height:100%;
     display:flex;
     border:0px solid rgba(40,40,40,1);
     border-radius: 5px;
-    padding:0 0px 5px 5px;
+    padding: 0px 5px 5px 10px;
     box-sizing:content-box;
     /*background-color: paleturquoise;*/
 }

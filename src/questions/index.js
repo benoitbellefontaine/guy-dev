@@ -5,6 +5,8 @@ import './qa.css';
 /*
 administrations publiques <i className="fas fa-university"></i>
 agriculture <i className="fas fa-tractor"></i>
+art <i className="fas fa-tractor"></i>
+
 */
 
 import Secteurs from './secteurs.js';
@@ -52,9 +54,9 @@ export default () => {
     const onRedo = useCallback(() => set(state => (0)), [])
 
     const transitions = useTransition(index, p => p, {
-        from: { opacity: 0, /*transform: 'translate3d(100%,0,0)'*/ },
+        from: { opacity: 0, /*transform: 'translate3d(0%,0,0)'*/ }, //from: { opacity: 0, /*transform: 'translate3d(100%,0,0)'*/ },
         enter: { opacity: 1, /*transform: 'translate3d(0%,0,0)'*/ },
-        leave: { opacity: 0, /*transform: 'translate3d(-50%,0,0)'*/ },
+        leave: { opacity: 0, /*transform: 'translate3d(0%,0,0)'*/ }, //leave: { opacity: 0, /*transform: 'translate3d(-50%,0,0)'*/ },
     })
 
     return (

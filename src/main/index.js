@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { useTrail, useSpring, animated } from 'react-spring'
-import './styles-main.css'
+import React, { useState } from 'react';
+import { useTrail, useSpring, animated } from 'react-spring';
+import { BrowserRouter, Switch, Route, Link, NavLink } from 'react-router-dom';
+import './styles-main.css';
 
 //const letters = ['C','P','O'];
 const letters = [
@@ -99,18 +100,25 @@ function App() {
     <div className="trails-main" onClick={() => set(state => !state)}>
       
             <div className="trails-inner" style={props}>
-                {trail.map(({ x, height, margin, padding, ...rest }, index) => (
-                    <animated.div className="trails-title" key={letters[index].letter} style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`), 
-                        height, margin, padding, color:letters[index].color }}>{letters[index].letter}</animated.div>
-                ))}
+              {trail.map(({ x, height, margin, padding, ...rest }, index) => (
+                  <animated.div className="trails-title" key={letters[index].letter} style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`), 
+                      height, margin, padding, color:letters[index].color }}>{letters[index].letter}</animated.div>
+              ))}
             </div>
-                {trail2.map(({ x, height, ...rest }, index) => (
-                    <animated.div className="trails-text" key={item[index]} style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`), 
-                        height, color:'black' }}>
-                        {item[index]}
-                    </animated.div>
-                ))}
-      
+              {trail2.map(({ x, height, ...rest }, index) => (
+                  <animated.div className="trails-text" key={item[index]} style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`), 
+                      height, color:'black' }}>
+                      {item[index]}
+                  </animated.div>
+              ))}
+            <div>
+              {trail2.map(({ x, height, ...rest }, index) => (
+                <animated.div className="trails-button" key={item[index]} style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`), 
+                    height, color:'black' }}>
+                    <Link to='/cycles'>comprendre les cycles de vie</Link>
+                </animated.div>
+              ))}
+            </div>
     </div>
   )
 }
