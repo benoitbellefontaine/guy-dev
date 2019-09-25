@@ -135,10 +135,10 @@ const Cycles = (props) => {
                             className="bg"
                             //style={{ ...props, backgroundImage: `url(https://images.unsplash.com/${item.url}&auto=format&fit=crop)`,
                             //    display:'flex', alignItems:'center', justifyContent:'center' }}
-                            style={{ ...props, backgroundImage: `url(https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)`,
-                                display:'flex', alignItems:'center', justifyContent:'center' }}
-                            //style={{ ...props, backgroundImage: `url(https://images.unsplash.com/photo-1418232885776-9ddbfbf9cff0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80)`,
+                            //style={{ ...props, backgroundImage: `url(https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)`,
                             //    display:'flex', alignItems:'center', justifyContent:'center' }}
+                            style={{ ...props, backgroundImage: `url(https://images.unsplash.com/photo-1418232885776-9ddbfbf9cff0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80)`,
+                                display:'flex', alignItems:'center', justifyContent:'center' }}
                             //
                             >
                             <div style={{fontSize:'20px',color:'white',padding:5,backgroundColor:'rgba(0,0,0,0.4)'}}>{item.text}</div>

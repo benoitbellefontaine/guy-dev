@@ -20,6 +20,7 @@ const questions = [
     "Choisir le cycle de vie de votre entreprise.",
     "Quelle sont les qualités que vous recherchez chez le consultant externe?",
     "Quel est votre chiffre d'affaire?",
+    "Quels sont vos plus grands défis?",
     "Des questions?",
 ];
 
@@ -80,19 +81,27 @@ const pages = [
             <div className="inner-contact-box"><Qualites /></div>
         </animated.div>,
     ({ style, onClick }) => 
-        <animated.div className="contact-box" style={{ ...style, display:'flex', width:'100%', alignItems:'flex-start', 
-            justifyContent:'center' }}>
-            <h3>{ true ? questions[6] : questions_a[6] }</h3>
-            <div className="inner-contact-box">
-                <Chiffres />
-            </div>
-        </animated.div>,
+    <animated.div className="contact-box" style={{ ...style, display:'flex', width:'100%', alignItems:'flex-start', 
+        justifyContent:'center' }}>
+        <h3>{ true ? questions[6] : questions_a[6] }</h3>
+        <div className="inner-contact-box">
+            <Chiffres />
+        </div>
+    </animated.div>,
+    ({ style, onClick }) => 
+    <animated.div className="contact-box" style={{ ...style, display:'flex', width:'100%', alignItems:'flex-start', 
+        justifyContent:'center' }}>
+        <h3>{ true ? questions[7] : questions_a[7] }</h3>
+        <div className="inner-contact-box">
+            <Defis />
+        </div>
+    </animated.div>,
     ({ style, onClick }) => 
         <animated.div className="contact-box" style={{ ...style, display:'flex', width:'100%', alignItems:'flex-start', 
             justifyContent:'center' }}>
-            <h3>{ true ? questions[7] : questions_a[7] }</h3>
-            <div className="inner-contact-box">
-                <Defis />
+            <h3>{ true ? questions[8] : questions_a[8] }</h3>
+            <div className="inner-contact-box" style={{width:'100%'}}>
+                <textarea />
             </div>
         </animated.div>,
 ]
@@ -119,7 +128,7 @@ const Contact = (props) => {
     });
 
     return (
-        <div style={{width:'100%',height:'100%',backgroundColor:'gray',display:'flex',
+        <div style={{width:'100%',height:'100%',backgroundColor:'#3da30088',display:'flex',
                 justifyContent:'center',alignItems:'center'}}>
             <div style={{width:props.width,height:'60%'}}>
 
@@ -144,10 +153,10 @@ const Contact = (props) => {
                     Continue
                 </button>
             
-                {/* <div style={{width:'80%',border:'0px solid red',fontSize:"10vmin",textAlign:'center',
+                <div style={{position:'absolute',left:'0px',top:'10%',width:'100%',border:'0px solid red',fontSize:"8vmin",textAlign:'center',
                     textShadow: '2px 4px 3px rgba(0,0,0,0.3)'}}>
-                    Questions - Contact
-                </div> */}
+                    Nous joindre
+                </div>
                 
                 <div style={{height:'100%',position:'relative'}}>
                     {transitions.map(({ item, props, key }) => {

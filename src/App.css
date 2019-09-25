@@ -2,13 +2,6 @@
   /*text-align: center;*/
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 10vmin;
-  pointer-events: none;
-  color: #889934;
-}
-
 .App-header {
   position: fixed;
   padding: 20px; 
@@ -95,11 +88,37 @@
 }
 
 header > div > a {
-  color: #e9edf1;
+  color: #888888;
+  background: #ffffff;
   font-size: 2vmin;
-  border: 1px solid #e9edf1;
+  border: 1px solid #888888;
   padding: 0.5vmin;
   margin: 0.5vmin;
+}
+
+header > div > a:hover {
+  text-decoration: none;
+  font-size: 2vmin;
+  padding: 0.5vmin;
+  margin: 0.5vmin;
+}
+
+header > div > a:hover:nth-child(1) {
+  color: #ffffff;
+  background: #8f3d3d;
+  border: 1px solid #8f3d3d;
+}
+
+header > div > a:hover:nth-child(2) {
+  color: #ffffff;
+  background: #45c8d9;
+  border: 1px solid #45c8d9;
+}
+
+header > div > a:hover:nth-child(3) {
+  color: #ffffff;
+  background: #3da300;
+  border: 1px solid #3da300;
 }
 
 .buttons {
@@ -111,11 +130,21 @@ header > div > div {
   width: 35px;
   background: #e9edf1;
   font-size: 2vmin;
-  border: 1px solid #e9edf1;
+  border: 1px solid #888888;
   padding: 0.5vmin;
   margin: 0.5vmin;
   text-align: center;
-  max-height: 4.5vmin;
+}
+
+header > div > div:hover {
+  color: white;
+  width: 35px;
+  background: black;
+  font-size: 2vmin;
+  border: 1px solid black;
+  padding: 0.5vmin;
+  margin: 0.5vmin;
+  text-align: center;
 }
 
 button {

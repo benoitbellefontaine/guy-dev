@@ -22,7 +22,7 @@ import { connect } from 'react-redux';
                     padding: 10,
                     margin: 3,
                     borderRadius: 10,
-                    color: selected ? 'white' : 'rgba(0,0,0,0.7)',
+                    color: selected ? 'white' : 'rgba(255,255,255,0.5)',
                     backgroundColor: selected ? 'rgb(116,184,33)' : 'rgba(255,255,255,0.3)',
                     //border: selected ? '2px solid rgb(116,184,33)' : '2px solid gray',
                     fontSize: '100%',
@@ -48,7 +48,7 @@ import { connect } from 'react-redux';
                 {/*<h3>
                     Indiquez le ou les secteurs d'activité de votre entreprise
                 </h3>*/}
-                <ul style={{margin:'0',width:'100%',boxSizing:'border-box',display:'flex',flexDirection:'row',flexWrap:'wrap',justifyContent:'center',padding:0}}>
+                <ul style={{margin:'0',padding:'0 2px 0 0',width:'100%',boxSizing:'border-box',display:'flex',flexDirection:'row',flexWrap:'wrap',justifyContent:'center'}}>
                     {secteurs.map(secteur => (
                         <SecteurItem key={secteur.id} {...secteur} onClick={() => onTodoClick(secteur.id)} />
                     ))}

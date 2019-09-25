@@ -5,7 +5,8 @@ import { useTransition, animated } from 'react-spring';
 import { BrowserRouter, Switch, Route, Link, NavLink } from 'react-router-dom';
 import { Drawer, Icon } from 'antd';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
+import * as Icons from './icons';
 
 // sections
 import Main from './main';
@@ -13,11 +14,8 @@ import Cycles from './cycles';
 import Tree from './tree';
 import data from './tree/data';
 import Header from './three/header';
-import Questions from './questions';
-import Questions2 from './questions/questions2';
 import Recaptcha from './recaptcha';
 import Contact from './contact';
-import Contact2 from './contact/contact2';
 
 function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -37,9 +35,9 @@ function App() {
 
   const { location } = useRouter()
   const transitions = useTransition(location, location => location.pathname, {
-    from: { opacity: 0, transform: 'translate3d(0%,0,0)', width: '100%', height: '100%', display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center' },
+    from: { opacity: 0, transform: 'translate3d(0%,0%,0)', width: '100%', height: '100%', display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center' },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)', overflow: 'hidden', width: '100%', height: '100%' },
-    leave: { opacity: 0, transform: 'translate3d(0%,0,0)', overflow: 'hidden', width: '100%', height: '100%' },
+    leave: { opacity: 0, transform: 'translate3d(0%,0%,0)', overflow: 'hidden', width: '100%', height: '100%' },
   })
 
   const margin = { top:50,right:75,bottom:50,left:75 };  
@@ -55,23 +53,21 @@ function App() {
       <header className="App-header" style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center',justifyContent:'space-between'}}>
         
         <div class="buttons">
-          <button className="center"><Link style={{color:'#e9edf1',textDecoration:'none',zIndex:1}} to='/main'>Consultants PME Outaouais</Link></button>
+          <button className="center"><Link style={{color:'#888888',textDecoration:'none',zIndex:1}} to='/main'>Consultants PME Outaouais</Link></button>
         </div>
 
         <div style={{display:'flex'}}>
-          <Link to='/cycles'>Cycles</Link>
-          <Link to='/tree'>Services</Link>
-          <Link to='/questions'>Q</Link>
-          <Link to='/contact'>Contact</Link>
-          <Link to='/contact2'>Contact2</Link>
-          <Link to='/recaptcha'>Recaptcha</Link>
+          <Link to='/cycles'><i class="fas fa-bicycle fa-lg"></i> Cycles</Link>
+          <Link to='/tree'><i class="fas fa-cogs fa-lg"></i> Services</Link>
+          <Link to='/contact'><i class="fas fa-phone fa-lg"></i> Contact</Link>
           <div onClick={()=>setLanguage(state=>!state)}>{ (language) ? 'Fr' : 'En' }</div>
         </div>
+        
       </header>
 
-      <nav className="App-menubar">
+      {/*<nav className="App-menubar">
         <Icon type="menu-fold" style={{outline:"none"}} onClick={ ()=>{setOpen(state=>(!state))} }/>
-      </nav> 
+      </nav>*/}
 
       <section className="">
         
@@ -93,17 +89,11 @@ function App() {
                 <Route path="/three" render={(props) => <Header {...props}
                   width={size.width} height={size.height} />}/>
                 <Route path="/contact" render={(props) => <Contact {...props}
-                  width={size.width} height={size.height} />}/>
-                <Route path="/contact2" render={(props) => <Contact2 {...props}
-                  width={size.width} height={size.height} />}/>
-                <Route path="/questions" render={(props) => <Questions {...props}
-                  width={size.width} height={size.height} />}/>
+                  width={size.width*80/100} height={size.height*80/100} />}/>
                 <Route path="/tree" render={(props) => <Tree items={data} {...props} 
                   width={size.width*80/100} height={size.height*70/100} margin={margin} />}/>
                 <Route path="/cycles" render={(props) => <Cycles {...props} 
                     width={size.width*100/100} height={size.height*70/100} margin={margin} />}/>
-                <Route path="/questions2" render={(props) => <Questions2 {...props} 
-                    width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
                 <Route path="/recaptcha" render={(props) => <Recaptcha {...props} 
                     width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
               </Switch>
