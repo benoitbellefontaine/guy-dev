@@ -1,11 +1,11 @@
 import React, {useState, useCallback, useRef, useEffect} from 'react';
 import { useTransition, animated } from 'react-spring';
 
-import Secteurs from '../questions/secteurs.js';
-import Cycles from '../questions/cycles.js';
-import Qualites from '../questions/qualites.js';
-import Chiffres from '../questions/chiffres.js';
-import Defis from '../questions/defis.js';
+import Secteurs from './secteurs.js';
+import Cycles   from './cycles.js';
+import Qualites from './qualites.js';
+import Chiffres from './chiffres.js';
+import Defis    from './defis.js';
 
 import './contact.css';
 import './customscrollbars.css';
@@ -82,7 +82,7 @@ const pages = [
     ({ style, onClick }) => 
         <animated.div className="contact-box" style={{ ...style, display:'flex', width:'100%', alignItems:'flex-start', 
             justifyContent:'center' }}>
-            <h3>{ true ? questions[3] : questions_a[3] }</h3>
+            <h3>{ true ? questions[6] : questions_a[6] }</h3>
             <div className="inner-contact-box">
                 <Chiffres />
             </div>
@@ -90,7 +90,7 @@ const pages = [
     ({ style, onClick }) => 
         <animated.div className="contact-box" style={{ ...style, display:'flex', width:'100%', alignItems:'flex-start', 
             justifyContent:'center' }}>
-            <h3>{ true ? questions[5] : questions_a[5] }</h3>
+            <h3>{ true ? questions[7] : questions_a[7] }</h3>
             <div className="inner-contact-box">
                 <Defis />
             </div>
@@ -180,5 +180,4 @@ const Contact = (props) => {
         </div>
     );
 }
-
 export default Contact
