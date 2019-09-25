@@ -97,7 +97,7 @@ const pages = [
         </animated.div>,
 ]
 
-const Contact2 = (props) => {
+const Contact = (props) => {
 
     const [index, set] = useState(0)
     const onForward = useCallback(() => set(state => (state + 1) % pages.length), []);
@@ -181,4 +181,4 @@ const Contact2 = (props) => {
     );
 }
 
-export default Contact2
+export default Contact
