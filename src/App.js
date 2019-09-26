@@ -57,9 +57,9 @@ function App() {
         </div>
 
         <div style={{display:'flex'}}>
-          <Link to='/cycles'><i class="fas fa-bicycle fa-lg"></i> Cycles</Link>
-          <Link to='/tree'><i class="fas fa-cogs fa-lg"></i> Services</Link>
-          <Link to='/contact'><i class="fas fa-phone fa-lg"></i> Contact</Link>
+          <Link to='/cycles'><i className="fas fa-bicycle fa-lg"></i> Cycles</Link>
+          <Link to='/tree'><i className="fas fa-cogs fa-lg"></i> Services</Link>
+          <Link to='/contact'><i className="fas fa-phone fa-lg"></i> Contact</Link>
           <div onClick={()=>setLanguage(state=>!state)}>{ (language) ? 'Fr' : 'En' }</div>
         </div>
         

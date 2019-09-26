@@ -24,12 +24,14 @@ const Tree = (props) => {
         to: { size: pane ? '50%' : '0%' },
     })
 
-    const { wrapper,iwrapper } = useSpring({
-        from: { wrapper:'80%', iwrapper:'100%' },
+    const { wrapper,iwrapper,fsize,f2size } = useSpring({
+        from: { wrapper:'80%', iwrapper:'100%', fsize:'20vmin', f2size:'4vmin' },
         to: { 
             //o: pane ? 1 : 0, 
             wrapper: pane ? '80%' : '80%', 
             iwrapper: pane ? '50%' : '100%', 
+            fsize: pane ? '5vmin' : '10vmin',
+            f2size: pane ? '2vmin' : '4vmin',
         },
     })
 
@@ -77,16 +79,17 @@ const Tree = (props) => {
     };
 
     return (
+        <div style={{width:'100%',height:'100%',backgroundColor:'#45c8d955',display:'flex',alignItems:'center',justifyContent:'center'}}>
         <animated.div className='mainpane' style={{ height: props.height, width: wrapper }}>
             {
                 // LEFTPANE
                 (!node.parent)
                     ?   // display root
-                        <animated.div className='rootpane' style={{width:iwrapper}}
+                        <animated.div className='rootpane' style={{width:iwrapper,fontSize:fsize}}
                             onClick={()=>handleOpenMainPane()}>
                             <div style={{display:'flex',flexDirection:'column',padding:20}}>
-                                <div style={{}}>{node.name}</div>
-                                <div style={{fontSize:'3vmin',lineHeight:'4vmin',padding:20}}>{node.ftext}</div>
+                                <div><i className="fas fa-cogs"></i> Services</div>
+                                <div style={{fontSize:'3vmin',padding:'0 100px 0 100px',lineHeight:'4vmin',padding:20}}>{node.ftext}</div>
                             </div>
                             {
                                 (pane) 
@@ -106,14 +109,11 @@ const Tree = (props) => {
                         </animated.div>
                     :   // display current + parent
                         <animated.div className='leftpane' style={{width:iwrapper}}>
-                            {/*<div className='parentpane' style={{}}>
-                                {node.parent.name}
-                            </div>*/}
                             <animated.div className='currentpane'
                                 style={{backgroundImage:node.color,opacity:opacitycurrentpane,height:heightcurrentpane}} 
                                 onClick={()=>handleClickParent(node,node.parent)}>
                                 <div className='buttonpane' style={{left:10}}><i className="fas fa-arrow-left"></i></div>
-                                <div style={{display:'flex',flexDirection:'column',padding:20,backgroundColor:'rgba(255,255,255,0.5)'}}>
+                                <div style={{margin:'0 50px 0 50px',display:'flex',flexDirection:'column',padding:20,backgroundColor:'rgba(255,255,255,0.5)'}}>
                                     <div style={{color:node.textcolor,}}>{node.name}</div>
                                     <div style={{color:node.textcolor,fontSize:'2.5vmin',lineHeight:'2.5vmin',padding:20}}>{node.ftext}</div>
                                 </div>
@@ -158,7 +158,7 @@ const Tree = (props) => {
                 </animated.div>
 
         </animated.div>
-        
+        </div>
     );
 
 }

@@ -87,8 +87,26 @@
   box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.75);
 }
 
-header > div > a {
-  color: #888888;
+header > div > a:nth-child(1) {
+  color: #8f3d3d;
+  background: #ffffff;
+  font-size: 2vmin;
+  border: 1px solid #888888;
+  padding: 0.5vmin;
+  margin: 0.5vmin;
+}
+
+header > div > a:nth-child(2) {
+  color: #45c8d9;
+  background: #ffffff;
+  font-size: 2vmin;
+  border: 1px solid #888888;
+  padding: 0.5vmin;
+  margin: 0.5vmin;
+}
+
+header > div > a:nth-child(3) {
+  color: #3da300;
   background: #ffffff;
   font-size: 2vmin;
   border: 1px solid #888888;

@@ -115,39 +115,41 @@ const Cycles = (props) => {
         config: config.molasses,
     })
     return (
-        <div style={{ cursor: 'pointer',
-            borderRadius: 10, boxSizing: 'border-box',
-            boxShadow: '0 2px 4px 0 rgba(25, 29, 34, 0.1)',
-            backgroundColor: 'white',
-            padding: 0, //'20px 20px 20px 20px',
-            color: 'rgba(25, 29, 34, 0.54)',
-            overflow: 'hidden'}} 
-                onClick={() => {
-                    console.log('onClick');
-                    //set2(state => !state)
-                }}>
-            <div style={{ position: 'relative', height: 100, padding: '0 0 10px 0' }}>
-            
-                { // transitions textSlides
-                    transitions.map(({ item, props, key }) => (
-                        <animated.div
-                            key={key}
-                            className="bg"
-                            //style={{ ...props, backgroundImage: `url(https://images.unsplash.com/${item.url}&auto=format&fit=crop)`,
-                            //    display:'flex', alignItems:'center', justifyContent:'center' }}
-                            //style={{ ...props, backgroundImage: `url(https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)`,
-                            //    display:'flex', alignItems:'center', justifyContent:'center' }}
-                            style={{ ...props, backgroundImage: `url(https://images.unsplash.com/photo-1418232885776-9ddbfbf9cff0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80)`,
-                                display:'flex', alignItems:'center', justifyContent:'center' }}
-                            //
-                            >
-                            <div style={{fontSize:'20px',color:'white',padding:5,backgroundColor:'rgba(0,0,0,0.4)'}}>{item.text}</div>
-                        </animated.div>
-                    ))
-                }
+        <div style={{width:'100%',height:'100%',backgroundColor:'#8f3d3d55',display:'flex',alignItems:'center',justifyContent:'center'}}>
+            <div style={{ cursor: 'pointer',
+                borderRadius: 10, boxSizing: 'border-box',
+                boxShadow: '0 2px 4px 0 rgba(25, 29, 34, 0.1)',
+                backgroundColor: 'white',
+                padding: 0,
+                color: 'rgba(25, 29, 34, 0.54)',
+                overflow: 'hidden'}} 
+                    onClick={() => {
+                        console.log('onClick');
+                        //set2(state => !state)
+                    }}>
+                <div style={{ position: 'relative', height: 100, padding: '0 0 10px 0' }}>
+                
+                    { // transitions textSlides
+                        transitions.map(({ item, props, key }) => (
+                            <animated.div
+                                key={key}
+                                className="bg"
+                                //style={{ ...props, backgroundImage: `url(https://images.unsplash.com/${item.url}&auto=format&fit=crop)`,
+                                //    display:'flex', alignItems:'center', justifyContent:'center' }}
+                                //style={{ ...props, backgroundImage: `url(https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)`,
+                                //    display:'flex', alignItems:'center', justifyContent:'center' }}
+                                style={{ ...props, backgroundImage: `url(https://images.unsplash.com/photo-1418232885776-9ddbfbf9cff0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80)`,
+                                    display:'flex', alignItems:'center', justifyContent:'center' }}
+                                //
+                                >
+                                <div style={{fontSize:'20px',color:'white',padding:5,backgroundColor:'rgba(0,0,0,0.4)'}}>{item.text}</div>
+                            </animated.div>
+                        ))
+                    }
 
-            </div>
-            <div className="viz" style={{ padding: '0 0 10px 0' }}>
+                </div>
+                <div className="viz" style={{ padding: '0 0 10px 0' }}>
+                </div>
             </div>
         </div>
     )

@@ -10,8 +10,8 @@ import glass2 from '../assets/scott-webb-M5PYMJ83OfE-unsplash.jpg';
 
 // data.js
 export default {
-    name:'CPO', type:'root', parent:null, 
-        ftext:"Construire et rénover des entreprises",
+    name:'Services', type:'root', parent:null, 
+        ftext:"pour construire et rénover des entreprises",
     children: [ 
         { name:'démarrage', type:'switch', 
             parent:'racines', 
