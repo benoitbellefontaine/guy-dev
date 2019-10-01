@@ -56,7 +56,6 @@ function serviceApp( state = initialstate, action ) {
                 visibilityFilter: action.filter
         })*/
         case 'TOGGLE_SERVICE':
-            console.log("serviceApp");
             return state.map(service =>
                 (service.id === action.id)
                 ? {...service, selected: !service.selected}
@@ -94,6 +93,9 @@ const initialState = {
             }
         ]
     },
+    name: {texte:''},
+    address: {texte:''},
+    questions: {text:''},
     services: [
         // DEMARRAGE
         { id:1, text: "structure d'entreprise",                cycles: ["demarrage"], completed:false },
@@ -251,6 +253,30 @@ const cpo = ( state = initialState.cpo, action ) => {
     }
 }
 
+const name = ( state = initialState.name, action ) => {
+    switch (action.type) {
+        case 'NAME_CHANGE':
+            return {
+                ...state,
+                texte: action.texte,
+            };
+        default:
+            return state
+    }
+}
+
+const address = ( state = initialState.address, action ) => {
+    switch (action.type) {
+        case 'ADDRESS_CHANGE':
+            return {
+                ...state,
+                texte: action.texte,
+            };
+        default:
+            return state
+    }
+}
+
 const team = ( state = initialState.team, action ) => {
     switch (action.type) {
         case 'SELECT':
@@ -260,7 +286,6 @@ const team = ( state = initialState.team, action ) => {
             : person
         )
         case 'CLICK':
-        console.log('CLICK');
         return state.map(person =>
             (
                 person.id === action.id)
@@ -355,17 +380,18 @@ const visibilityFilter = (state = 'SHOW_NONE', action) => {
 }
 
 const reducers = combineReducers({
-  services,
-  visibilityFilter,
-  team,
-  secteurs,
-  cycles,
-  qualites,
-  chiffres,
-  defis,
-  serviceApp
-  //form: formReducer
+    services,
+    visibilityFilter,
+    team,
+    secteurs,
+    cycles,
+    qualites,
+    chiffres,
+    defis,
+    serviceApp,
+    //form elements
+    name,
+    address,
 })
 
 export default reducers;
-//export {treeData};

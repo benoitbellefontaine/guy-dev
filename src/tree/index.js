@@ -1,13 +1,11 @@
 // Tree.js
 import React, {useState} from 'react';
-import {useSpring, useTrail, useChain, animated} from 'react-spring'
+import {useSpring, useTrail, useChain, animated} from 'react-spring';
 //import ProcessChildren from './ProcessChildren';
 
-import './tree.css'
+import * as Icons from '../icons';
 
-//if root clicked display root and immediate children
-//if node clicked display node + immediate children
-//if leaf click display leaf
+import './tree.css'
 
 const Tree = (props) => {
 
@@ -18,7 +16,7 @@ const Tree = (props) => {
     const [mainpane, closeMainPane] = useState(false)
 
     // react spring hooks
-    const {size,opacity,...rest } = useSpring({
+    const { size,opacity,...rest } = useSpring({
         opacity: pane ? 0 : 1,
         from: { size: '0%' },
         to: { size: pane ? '50%' : '0%' },
@@ -48,7 +46,6 @@ const Tree = (props) => {
         config,
         opacitytrail: (currentpane && pane) ? 1 : 0,
         xtrail: currentpane ? 0 : 10,
-        //height: currentpane ? 80 : 0,
         from: { opacitytrail: 0, xtrail: 20, height: 0 },
     })
 
@@ -69,7 +66,6 @@ const Tree = (props) => {
     };
 
     const handleClickParent = (item,parent) => {
-        //console.log('parent',parent);
         if (parent) set(parent);
     };
 
@@ -79,8 +75,10 @@ const Tree = (props) => {
     };
 
     return (
-        <div style={{width:'100%',height:'100%',backgroundColor:'#45c8d955',display:'flex',alignItems:'center',justifyContent:'center'}}>
+        <div style={{width:'100%',height:'100%',backgroundColor:'#45c8d955',display:'flex',alignItems:'center',
+        justifyContent:'center'}}>
         <animated.div className='mainpane' style={{ height: props.height, width: wrapper }}>
+
             {
                 // LEFTPANE
                 (!node.parent)
@@ -89,6 +87,7 @@ const Tree = (props) => {
                             onClick={()=>handleOpenMainPane()}>
                             <div style={{display:'flex',flexDirection:'column',padding:20}}>
                                 <div><i className="fas fa-cogs"></i> Services</div>
+                                
                                 <div style={{fontSize:'3vmin',padding:'0 100px 0 100px',lineHeight:'4vmin',padding:20}}>{node.ftext}</div>
                             </div>
                             {
@@ -114,7 +113,7 @@ const Tree = (props) => {
                                 onClick={()=>handleClickParent(node,node.parent)}>
                                 <div className='buttonpane' style={{left:10}}><i className="fas fa-arrow-left"></i></div>
                                 <div style={{margin:'0 50px 0 50px',display:'flex',flexDirection:'column',padding:20,backgroundColor:'rgba(255,255,255,0.5)'}}>
-                                    <div style={{color:node.textcolor,}}>{node.name}</div>
+                                    <div style={{color:node.textcolor,}}><div style={{margin:'0 0 5px 0'}}><i className={node.icon}></i></div>{node.name}</div>
                                     <div style={{color:node.textcolor,fontSize:'2.5vmin',lineHeight:'2.5vmin',padding:20}}>{node.ftext}</div>
                                 </div>
                             </animated.div>
@@ -122,40 +121,40 @@ const Tree = (props) => {
 
             }
 
-                <animated.div className='rightpane' style={{...rest,width:size}}>
+            <animated.div className='rightpane' style={{...rest,width:size}}>
                     
-                    {
-                        
-                        trail.map(({ xtrail, opacitytrail, ...rest }, index) => (
-                            <animated.div className='children'
-                                key={index}
-                                onClick={ ()=>handleClick(node.children[index],node) }
-                                style={{
-                                    ...rest,
-                                    opacity:opacitytrail,
-                                    transform: xtrail.interpolate(xtrail => `translate3d(0,${xtrail}px,0)`),
-                                    backgroundImage: node.children[index].color,
-                                    backgroundRepeat:'no-repeat',
-                                    backgroundSize: 'cover',
-                                    color:node.children[index].textcolor,
-                                    position:'relative',
+                {
+                    
+                    trail.map(({ xtrail, opacitytrail, ...rest }, index) => (
+                        <animated.div className='children'
+                            key={index}
+                            onClick={ ()=>handleClick(node.children[index],node) }
+                            style={{
+                                ...rest,
+                                opacity:opacitytrail,
+                                transform: xtrail.interpolate(xtrail => `translate3d(0,${xtrail}px,0)`),
+                                backgroundImage: node.children[index].color,
+                                backgroundRepeat:'no-repeat',
+                                backgroundSize: 'cover',
+                                color:node.children[index].textcolor,
+                                position:'relative',
+                            }}>
+                            <div style={{position:'absolute',top:"1vmin",left:"1vmin",width:'2vw',height:'2vw',backgroundColor:node.children[index].textcolor,borderRadius:'15px'}}></div>
+                            <animated.div style={{
+                                //backgroundImage: node.children[index].color,
+                                //backgroundRepeat:'no-repeat',
+                                //backgroundSize: 'cover'
                                 }}>
-                                <div style={{position:'absolute',top:"1vmin",left:"1vmin",width:'2vw',height:'2vw',backgroundColor:node.children[index].textcolor,borderRadius:'15px'}}></div>
-                                <animated.div style={{
-                                    //backgroundImage: node.children[index].color,
-                                    //backgroundRepeat:'no-repeat',
-                                    //backgroundSize: 'cover'
-                                    }}>
-                                    <div style={{display:'flex'}}>
-                                        {node.children[index].name}
-                                    </div>
-                                </animated.div>
+                                <div style={{display:'flex',flexDirection:'column'}}>
+                                    <i className={node.children[index].icon}></i><span>{node.children[index].name}</span>
+                                </div>
                             </animated.div>
-                          ))
-                
-                    }
+                        </animated.div>
+                        ))
+            
+                }
                     
-                </animated.div>
+            </animated.div>
 
         </animated.div>
         </div>

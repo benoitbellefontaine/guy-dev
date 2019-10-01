@@ -152,4 +152,23 @@ const ToolLogo = (props) => {
     );    
 }
 
-export {ReactLogo,Logo,LifeCycleLogo,ContactLogo,ToolLogo,Bicycle};
+const Sailboat = (props) => {
+    //const { url, reversed, shrunk } = props;
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width='10vmin' height='10vmin'>
+            <rect x="-391" y="-1681" display='none' fill="#2B3544" width="608" height="1984"/>
+            <circle fill="#77B3D4" cx="32" cy="32" r="32"/>
+            <g opacity="0.2">
+                <path fill="#231F20" d="M43,51c0,0-10.2,2-18.9,2s-13.2-7.1-13.2-7.1h41.9C52.8,45.9,51.2,50,43,51z"/>
+                <path fill="#231F20" d="M24.1,53.5c-8.9,0-13.4-7-13.6-7.3c-0.1-0.2-0.1-0.3,0-0.5c0.1-0.2,0.3-0.3,0.4-0.3h41.9c0.2,0,0.3,0.1,0.4,0.2s0.1,0.3,0,0.5c-0.1,0.2-1.9,4.4-10.2,5.4C43,51.5,32.8,53.5,24.1,53.5z M11.9,46.4c1.4,1.8,5.5,6.1,12.2,6.1c8.6,0,18.7-2,18.8-2c5.7-0.7,8.1-2.9,9-4.1H11.9z"/>
+            </g>
+            <path opacity="0.2" fill="#231F20" d="M28.1,11.5c-0.2,0-0.4,0.1-0.5,0.2c-0.1,0.2-0.1,0.4,0,0.6c6.7,9,3.7,21.6,1.9,26.9V18c0-0.2-0.2-0.5-0.4-0.5c-0.2,0-0.5,0.1-0.5,0.4c-0.1,0.2-5.8,20.4-14.7,23.7c-0.2,0.1-0.4,0.3-0.3,0.6c0,0.2,0.2,0.4,0.5,0.4h15h20c0.3,0,0.5-0.2,0.5-0.5C49.5,15.5,28.3,11.5,28.1,11.5z"/>
+            <path fill='#FFFFFF' stroke='#FFFFFF' strokeLinejoin='round' strokeMiterlimit='10' d="M43,49c0,0-10.2,2-18.9,2s-13.2-7.1-13.2-7.1h41.9C52.8,43.9,51.2,48,43,49z"/>
+            <path fill='#F5CF87' stroke='#F5CF87' strokeLinejoin='round' strokeMiterlimit='10' d="M29,16c0,0-5.8,20.6-15,24h15V16z"/>
+            <path fill='#C75C5C' stroke='#C75C5C' strokeLinejoin='round' strokeMiterlimit='10' d="M29,40c0,0,8-18-1-30c0,0,21,3.6,21,30H29z"/>
+
+        </svg>
+    );
+};
+
+export {ReactLogo,Logo,LifeCycleLogo,ContactLogo,ToolLogo,Bicycle,Sailboat};

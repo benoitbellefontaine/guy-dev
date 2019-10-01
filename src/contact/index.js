@@ -6,6 +6,8 @@ import Cycles   from './cycles.js';
 import Qualites from './qualites.js';
 import Chiffres from './chiffres.js';
 import Defis    from './defis.js';
+import Name    from './name';
+import Address    from './address';
 
 import './contact.css';
 import './customscrollbars.css';
@@ -38,59 +40,69 @@ const questions_a = [
 const pages = [
     ({ style, onClick }) =>
         <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'calc(10px + 2vmin)',
-            fontSize:"4vmin",textAlign:'justify',textAlignLast:'center'}}>
+            fontSize:"4vmin", lineHeight:"4vmin",textAlign:'center',textAlignLast:'center',lineHeight:'4vmin'}}>
             { true ? questions[0] : questions_a[0] }
         </animated.div>,
     ({ style, onClick }) =>
-        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px 20px 10px 20px' }}>
-            <h3>{ true ? questions[1] : questions_a[1] }</h3>
-            <input className="fs-anim-lower" id="q1" name="q1" type="text" placeholder="Dean Moriarty" required/>
+        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px 20px 10px 20px',
+            fontSize:"4vmin", lineHeight:"4vmin" }}>
+            { true ? questions[1] : questions_a[1] }
+            <Name />
         </animated.div>,
     ({ style, onClick }) =>
-        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px' }}>
-            <h3>{ true ? questions[2] : questions_a[2] }</h3>
-            <input className="fs-anim-lower" id="q1" name="q1" type="text" placeholder="Dean Moriarty" required/>
+        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px',
+            fontSize:"4vmin", lineHeight:"4vmin" }}>
+            { true ? questions[2] : questions_a[2] }
+            <Address />
         </animated.div>,
     ({ style, onClick }) =>
-        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px' }}>
-            <h3>{ true ? questions[3] : questions_a[3] }</h3>
+        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px',
+            fontSize:"4vmin", lineHeight:"4vmin" }}>
+            { true ? questions[3] : questions_a[3] }
             <div className="inner-contact-box"> <Secteurs /> </div>
         </animated.div>,
     ({ style, onClick }) =>
-        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px' }}>
-            <h3>{ true ? questions[4] : questions_a[4] }</h3>
+        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px',
+            fontSize:"4vmin", lineHeight:"4vmin" }}>
+            { true ? questions[4] : questions_a[4] }
             <div className="inner-contact-box"> <Cycles /> </div>
         </animated.div>,
     ({ style, onClick }) =>
-        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px' }}>
-            <h3>{ true ? questions[5] : questions_a[5] }</h3>
+        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px',
+            fontSize:"4vmin", lineHeight:"4vmin" }}>
+            { true ? questions[5] : questions_a[5] }
             <div className="inner-contact-box"><Qualites /></div>
         </animated.div>,
     ({ style, onClick }) =>
-    <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px' }}>
-        <h3>{ true ? questions[6] : questions_a[6] }</h3>
-        <div className="inner-contact-box"> <Chiffres /> </div>
-    </animated.div>,
+        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px',
+            fontSize:"4vmin", lineHeight:"4vmin" }}>
+            { true ? questions[6] : questions_a[6] }
+            <div className="inner-contact-box"> <Chiffres /> </div>
+        </animated.div>,
     ({ style, onClick }) =>
-    <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px' }}>
-        <h3>{ true ? questions[7] : questions_a[7] }</h3>
-        <div className="inner-contact-box"> <Defis /> </div>
-    </animated.div>,
+        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px',
+            fontSize:"4vmin", lineHeight:"4vmin" }}>
+            { true ? questions[7] : questions_a[7] }
+            <div className="inner-contact-box"> <Defis /> </div>
+        </animated.div>,
     ({ style, onClick }) =>
-        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'10px' }}>
-            <h3>{ true ? questions[8] : questions_a[8] }</h3>
-            <div className="inner-contact-box" style={{width:'100%'}}> <textarea /> </div>
+        <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'20px',
+            fontSize:"4vmin", lineHeight:"4vmin" }}>
+            { true ? questions[8] : questions_a[8] }
+            <div className="inner-contact-box" style={{width:'100%',height:'100%'}}> <textarea style={{height:'98%'}}/> </div>
         </animated.div>,
 ]
 
 const Contact = (props) => {
 
     const [index, set] = useState(0)
+    const [value1, setValue] = useState('sdsd');
+
     const onForward = useCallback(() => set(state => (state + 1) % pages.length), []);
     const onBack = useCallback(() => set(state => (state - 1) % pages.length), []);
     const onRedo = useCallback(() => set(state => (0)), []);
 
-    const onClick = useCallback(() => set(state => (state + 1) % pages.length), []);
+    const onClick = useCallback(() => set(state => (state + 1)), []);
     const onSelect = useCallback(() => set(state => (index)), []);
 
     const transitions = useTransition(index, p => p, {
@@ -100,32 +112,25 @@ const Contact = (props) => {
     })
 
     const refCaptcha = useRef(null);
-    useEffect(() => {
-        loadReCaptcha();
-    });
+    useEffect(() => { loadReCaptcha(); });
 
     return (
-        <div style={{width:'100%',height:'100%',backgroundColor:'#3da30055',display:'flex',
-                justifyContent:'center',alignItems:'center'}}>
+        <div className="contact-page" style={{backgroundColor: '#3da30088'}}>
 
-            <div style={{ width:props.width, height:'60%',border:'0px solid gray',backgroundColor:'#3da300', borderRadius:5}}>
-
-                <div style={{
-                    position:'relative',width:'100%',height:'20%',border:'0px solid red',fontSize:"8vmin",textAlign:'center',
-                    textShadow: '2px 4px 3px rgba(0,0,0,0.3)'}}>
-                    Nous joindre
-                </div>
-                
-
+            {
+                (index >= 0) && (index < pages.length) &&
                 <nav className="fs-nav-dots">
-                    {
-                        questions.map((q,i)=>{
-                            return i === index 
-                                ? <button key={i} className="fs-dot-current" onClick={onSelect}></button>
-                                : <button key={i} onClick={onSelect}></button>;
-                        })
-                    }
+                {
+                    questions.map((q,i)=>{
+                        return i === index 
+                            ? <button key={i} className="fs-dot-current" onClick={() => set(i)}></button>
+                            : <button key={i} onClick={() => set(i)}></button>;
+                    })
+                }
                 </nav>
+            }
+            {
+                (index >= 0) && (index < pages.length) &&
                 <span className="fs-numbers">
                     <span className="fs-number-current">
                         {index+1}
@@ -134,16 +139,32 @@ const Contact = (props) => {
                         {pages.length}
                     </span>
                 </span>
-                <button className="fs-continue" onClick={onClick}>
-                    Continue
-                </button>
-            
-                <div style={{height:'80%',position:'relative',border:'0px solid green'}}>
-                    {transitions.map(({ item, props, key }) => {
-                        const Page = pages[item]
-                        return <Page key={key} style={props}  /> 
-                    })}
+            }
+            <button className="fs-continue" onClick={onClick}>
+                Continue
+            </button>
+
+            <div style={{ width:props.width, height:'60%',border:'0px solid gray',backgroundColor:'#3da30055', borderRadius:5 }}>
+
+                <div style={{
+                    position:'relative',width:'100%',height:'20%',border:'0px solid red',fontSize:"8vmin",textAlign:'center',
+                    textShadow: '2px 4px 3px rgba(0,0,0,0.3)',display:'flex',justifyContent:'center',alignItems:'center',
+                    backgroundColor: '#3da300cc'}}>
+                    Contact
                 </div>
+            
+                {
+                    (index >= 0) && (index < pages.length) &&
+                    <div style={{height:'80%',position:'relative'}}>
+                        {transitions.map(({ item, props, key }) => {
+                            const Page = pages[item];
+                            return <Page key={key} style={props} />
+                        })}
+                    </div>
+                }
+                {
+                    (index === pages.length) && <div>Hello</div>
+                }
 
                 {/*<div style={{position:'absolute',bottom:'10px',width:'80%',border:'0px solid red',display:"flex",boxSizing:'border-box',
                     justifyContent:'flex-end',margin:10}}>

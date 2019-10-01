@@ -85,7 +85,7 @@ const Tree = (props) => {
                         <animated.div className='rootpane' style={{width:iwrapper}}
                             onClick={()=>handleOpenMainPane()}>
                             <div style={{display:'flex',flexDirection:'column',padding:20}}>
-                                <div style={{}}>{node.name}</div>
+                                <div style={{}}><i className={node.icon}></i> {node.name}</div>
                                 <div style={{fontSize:'3vmin',lineHeight:'4vmin',padding:20}}>{node.ftext}</div>
                             </div>
                             {
@@ -114,7 +114,7 @@ const Tree = (props) => {
                                 onClick={()=>handleClickParent(node,node.parent)}>
                                 <div className='buttonpane' style={{left:10}}><i className="fas fa-arrow-left"></i></div>
                                 <div style={{display:'flex',flexDirection:'column',padding:20,backgroundColor:'rgba(255,255,255,0.5)'}}>
-                                    <div style={{color:node.textcolor,}}>{node.name}</div>
+                                    <div style={{color:node.textcolor,}}><i className={node.icon}></i> {node.name}</div>
                                     <div style={{color:node.textcolor,fontSize:'2.5vmin',lineHeight:'2.5vmin',padding:20}}>{node.ftext}</div>
                                 </div>
                             </animated.div>
@@ -147,6 +147,7 @@ const Tree = (props) => {
                                     //backgroundSize: 'cover'
                                     }}>
                                     <div style={{display:'flex'}}>
+                                        <i className={node.children[index].icon}></i>
                                         {node.children[index].name}
                                     </div>
                                 </animated.div>

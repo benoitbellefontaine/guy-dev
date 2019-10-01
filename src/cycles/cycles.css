@@ -8,3 +8,14 @@
     background-position: center;
     will-change: opacity;
 }
+
+.cycles-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../assets/images cycles/malgorzata-frej-EQhpvZWdr5s-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

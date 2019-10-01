@@ -1,12 +1,4 @@
-.homeRoute {
-    position: absolute;
-    width: 100vw;
-    height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+
   .trails-main {
     position: relative;
     width: 100vw;
@@ -27,41 +19,36 @@
   
   .trails-title {
     position: relative;
-    /*height: 70px;*/
     height: 0px;
-    line-height: 70px;
     color: palevioletred;
     font-size: 5em;
     font-weight: 800;
     text-transform: uppercase;
     will-change: transform, opacity;
     overflow: hidden;
-    /*padding: 20px;
-    margin: 10px;*/
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    align-items: center;
     background-color: rgba(0,0,0,0.05);
     /*line-height: 40px;*/
   }
   
   .trails-text {
     position: relative;
-    /*height: 30px;*/
-    /*line-height: 30px;*/
     color: palevioletred;
-    font-size: 1.3em;
+    font-size: 4vmin;
     /*font-weight: 800;*/
     /*text-transform: uppercase;*/
     will-change: transform, opacity;
     overflow: hidden;
     padding: 20px;
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
     background-color: rgba(0,0,0,0.05);
-    /*line-height: 40px;*/
   }
   
   .trails-button > a {

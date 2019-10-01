@@ -24,8 +24,7 @@ import { connect } from 'react-redux';
                     margin: 3,
                     borderRadius: 10,
                     color: selected ? 'white' : 'rgba(0,0,0,0.7)',
-                    backgroundColor: selected ? 'rgb(116,184,33)' : 'rgba(255,255,255,0.3)',
-                    //border: selected ? '2px solid rgb(116,184,33)' : '2px solid gray',
+                    backgroundColor: selected ? '#262' : 'rgba(255,255,255,0.8)', //vert:rgb(116,184,33)
                     fontSize: '100%',
                     fontWeight: 600,
                     flexGrow: 1
@@ -33,8 +32,7 @@ import { connect } from 'react-redux';
                 >
                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                     <div><i className={selected ? `fas fa-check-square fa-2x` : `far fa-square fa-2x`}></i></div>
-                    <span style={{width:'90%',margin:'0 auto',textAlign:'center'}}>{text}</span>
-                    <span> </span>
+                    <span style={{width:'90%',margin:'0 auto',padding:'0 5px 0 5px',textAlign:'center'}}>{text}</span>
                 </div>
             </li>
         )

@@ -107,7 +107,7 @@ function App() {
             </div>
               {trail2.map(({ x, height, ...rest }, index) => (
                   <animated.div className="trails-text" key={item[index]} style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`), 
-                      height, color:'black' }}>
+                      color:'black' }}>
                       {item[index]}
                   </animated.div>
               ))}

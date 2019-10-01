@@ -1,8 +1,13 @@
 .contact-page {
-    color: white;
-    background: #373B44;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(#4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right top, #030e1f, #323a4e, #646981, #9a9cb9, #d5d3f4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-image: url(../assets/god-adam.jpg);
+    background-repeat: no-repeat;
+	background-size: cover;
+	background-color:'#45c8d955';*/
 }
 
 .contact-box {
@@ -16,11 +21,8 @@
     flex-direction: column;
     color: white;
     font-weight: 800;
-    /*font-size: 3vmin;*/
     will-change: transform, opacity;
-    /*padding: 0px 20px 0px 20px;*/
     box-sizing: border-box;
-    /*overflow-y: auto;*/
 }
 
 .inner-contact-box {
@@ -29,7 +31,6 @@
 }
 
 .contact-send-button {
-    /*width:304px;*/
     width: 100%;
     height:73px;
     margin:0;
@@ -62,12 +63,20 @@ input {
     outline: none;
 }
 
+.contact-box [required] {
+	background-image: url(../assets/abacusstar.svg);
+	background-position: top right;
+	background-size: 18px;
+	background-repeat: no-repeat;
+	/*background-color: red;*/
+}
+
 textarea {
     /*width: 100%;*/
     min-width: 100%;
     max-width: 100%;
     padding: 2px;
-    height: 10vh;
+    /*height: 10vh;*/
     border: 0px solid red;
     border-radius: 5px;
     background-color: rgba(255,255,255,0.9);
@@ -96,9 +105,9 @@ textarea {
 	position: relative;
 	display: block;
 	padding: 0;
-	margin: 16px 0;
-	width: 16px;
-	height: 16px;
+	margin: 2vmin 0;
+	width: 2vmin;
+	height: 2vmin;
 	border-radius: 50%;
 	background: transparent;
 	-webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
@@ -150,16 +159,17 @@ textarea {
 /* Number indicator */
 .fs-numbers {
     position: absolute;
-    top: 100px;
+    top: 15%;
     right: 0;
     overflow: hidden;
     color: rgba(0,0,0,0.4);
     margin: 4vmin;
+    padding: 1vmin;
     width: 2em;
     font-weight: 700;
     font-size: 4vmin;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    cursor: default;
+	cursor: default;
 }
 
 .fs-numbers:after {

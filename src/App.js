@@ -16,6 +16,8 @@ import data from './tree/data';
 import Header from './three/header';
 import Recaptcha from './recaptcha';
 import Contact from './contact';
+import URT from './usereducertest';
+
 
 function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -52,14 +54,15 @@ function App() {
 
       <header className="App-header" style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center',justifyContent:'space-between'}}>
         
-        <div class="buttons">
+        <div className="buttons">
           <button className="center"><Link style={{color:'#888888',textDecoration:'none',zIndex:1}} to='/main'>Consultants PME Outaouais</Link></button>
         </div>
 
         <div style={{display:'flex'}}>
-          <Link to='/cycles'><i className="fas fa-bicycle fa-lg"></i> Cycles</Link>
-          <Link to='/tree'><i className="fas fa-cogs fa-lg"></i> Services</Link>
-          <Link to='/contact'><i className="fas fa-phone fa-lg"></i> Contact</Link>
+          <Link to='/cycles'><i className="fas fa-bicycle fa-lg" style={{margin:'0 5px 0 0'}}></i> Cycles</Link>
+          <Link to='/tree'><i className="fas fa-cogs fa-lg" style={{margin:'0 5px 0 0'}}></i> Services</Link>
+          <Link to='/contact'><i className="fas fa-phone fa-lg" style={{margin:'0 5px 0 0'}}></i> Contact</Link>
+          <Link to='/urt'><i className="fas fa-settings fa-lg" style={{margin:'0 5px 0 0'}}></i> URT</Link>
           <div onClick={()=>setLanguage(state=>!state)}>{ (language) ? 'Fr' : 'En' }</div>
         </div>
         
@@ -95,6 +98,8 @@ function App() {
                 <Route path="/cycles" render={(props) => <Cycles {...props} 
                     width={size.width*100/100} height={size.height*70/100} margin={margin} />}/>
                 <Route path="/recaptcha" render={(props) => <Recaptcha {...props} 
+                    width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
+                <Route path="/urt" render={(props) => <URT {...props} initialCount={0}
                     width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
               </Switch>
             </animated.div>
