@@ -1,6 +1,8 @@
 import React, {useState, useCallback, useRef, useEffect} from 'react';
 import { useTransition, animated } from 'react-spring';
 
+import axios from 'axios';
+
 import Secteurs from './secteurs.js';
 import Cycles   from './cycles.js';
 import Qualites from './qualites.js';
@@ -13,6 +15,8 @@ import './contact.css';
 import './customscrollbars.css';
 
 import { ReCaptcha, loadReCaptcha } from 'react-recaptcha-google';
+
+import store from '../index';
 
 const questions = [
     "Vous avez une question ? Nous aimerions avoir de vos nouvelles. Envoyez-nous un message avec vos réponses et nous vous répondrons dans les plus brefs délais.",
@@ -114,6 +118,82 @@ const Contact = (props) => {
     const refCaptcha = useRef(null);
     useEffect(() => { loadReCaptcha(); });
 
+    const handleMailSubmitLocalServer = () => {
+
+        // define 
+        let array_services = [], array_secteurs = [], array_qualites = [], array_chiffres = [], array_cycles= [], array_defis= [];
+        let secteurs = '', qualites = '', chiffres = '', cycles = '', defis = '';
+
+        // get selections from the store
+        store.getState().secteurs.map(
+            (secteur) => { 
+                //if (secteur.selected) array_secteurs.push(secteur.text);
+                if (secteur.selected) secteurs += secteur.text + ', ';
+            }
+        )
+        store.getState().cycles.map(
+            (cycle) => { 
+                //if (cycle.selected) ccl.push(cycle.text);
+                if (cycle.selected) cycles += cycle.text + ', ';
+            }
+        )
+        store.getState().qualites.map(
+            (qualite) => { 
+                //if (qualite.selected) array_qualites.push(qualite.text);
+                if (qualite.selected) qualites += qualite.text + ', ';
+            }
+        )
+        store.getState().chiffres.map(
+            (chiffre) => { 
+                //if (chiffre.selected) array_chiffres.push(chiffre.text);
+                if (chiffre.selected) chiffres += chiffre.text + ', ';
+            }
+        )
+        store.getState().defis.map(
+            (defi) => { 
+                //if (defi.selected) array_defis.push(defi.text);
+                if (defi.selected) defis += defi.text + ', ';
+            }
+        )
+
+        // aggregate
+        var qa = [
+            //{q:'services',  a: services},
+            {q:'secteurs',  a: secteurs},
+            {q:'cycle',     a: cycles},
+            {q:'qualites',  a: qualites},
+            {q:'chiffre',   a: chiffres},
+            {q:'défis',     a: defis},
+        ];
+
+        axios.post ( 
+            `http://localhost:3001/api/mail`,
+            {
+                id:     Date.now(), 
+                name:   store.getState().name.texte,  
+                email:  store.getState().address.texte,
+                //text:   this.state.message, 
+                qa:     qa,
+                //captcha:this.state.value
+            },
+            {
+                headers:{
+                    'Accept':'application/json, text/plain, */*',
+                    'Content-type': 'application/json'
+                }
+            },
+        )
+        .catch(err => {
+            console.log('err', err);
+            //this.setState({data: comments});
+          })
+        //.then((res) => res.json())
+        .then((response) => {
+            console.log('response',response);
+            //this.setState({datastatus:response.data.success,showAlert:true})
+        })
+    }
+
     return (
         <div className="contact-page" style={{backgroundColor: '#3da30088'}}>
 
@@ -142,6 +222,9 @@ const Contact = (props) => {
             }
             <button className="fs-continue" onClick={onClick}>
                 Continue
+            </button>
+            <button className="fs-Submit" onClick={handleMailSubmitLocalServer}>
+               Submit
             </button>
 
             <div style={{ width:props.width, height:'60%',border:'0px solid gray',backgroundColor:'#3da30055', borderRadius:5 }}>

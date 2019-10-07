@@ -4,29 +4,25 @@
 //first we import our dependencies…
 var express = require('express');
 var bodyParser = require('body-parser');
-var request = require('request');
 
 var user = 'consultantspmeoutaouais';
 var password = 'Be473918$';
-
-var sendgrid_key = '';
-
+var key = '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';
 
 //and create our instances
 var app = express();
 var router = express.Router();
 //var sendgrid = require('sendgrid')(user,key);
 
-var SendGrid = require('sendgrid-nodejs').SendGrid;
-var sendgrid = new SendGrid(user, key);
+//var SendGrid = require('sendgrid-nodejs').SendGrid;
+//var sendgrid = new SendGrid(user, key);
 
 const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(key);
 
 //set our port to either a predetermined port number if you have set 
 //it up, or 3001
-//var port = process.env.API_PORT || 3001;
-var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080;
-var ip = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || '0.0.0.0';
+var port = process.env.API_PORT || 3001;
 
 // db config
 //mongoose.connect('mongodb://cpo_user:12344321@ds115866.mlab.com:15866/mern');
@@ -56,110 +52,92 @@ router.get('/', function(req, res) {
 //adding the /comments route to our /api router
 router.route('/mail')
 
-    //retrieve all comments from the database
-    .get(function(req, res) {
-        //looks at our Comment Schema
-        Comment.find(function(err, comments) {
-        if (err)
-            res.send(err);
-        //responds with a json object of our database comments.
-        res.json(comments)
-        });
-    })
-
     //post new comment to the database
     .post(function(req, res) {
-
-        console.log('req.body',req.body);
-
-        if (
-            req.body.captcha === undefined ||
-            req.body.captcha === '' ||
-            req.body.captcha === null
-        ) {
-            console.log('captcha not valid');
-            return res.json({'success':false, "msg":"Please select captcha"})
-        }
-
-        console.log('req.body.captcha',req.body.captcha);
-        
-        const secretKey = '';
-    
-        const verifyUrl = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
-    
-        request(verifyUrl, (err,response,body) => {
-            body = JSON.parse(body);
-            console.log(body);
             
-            // if not successful
-            if (body.success !== undefined && !body.success) {
-                console.log('verification not successful');
-                return res.json({'success':false,'msg':'Failed captcha verification'});
+        /*///////// START - sendgrid ///////////*/
+
+        console.log('******************************************************');
+        console.log('********************** sendgrid **********************');
+        console.log('******************************************************');
+
+        console.log(req.body);
+        /*
+        sendgrid.send({
+            to: 'benoit.bellefontaine@canada.ca',
+            from: 'benoit.bellefontaine@gmail.com',
+            subject: 'Hello World',
+            text: req.body.text
+        }, function(err, json) {
+            if (err) { 
+                console.log('error sending email');
+                return res.send('error sending email'); 
             }
-            // if successful
-            
+            console.log('email sent successfully!');
+            res.send('email sent successfully!');
+        });
+        */
 
-            console.log('******************************************************');
-            console.log('********************** sendgrid **********************');
-            console.log('******************************************************');
-            
-            console.log(req.body);
+        let table = '';
+        req.body.qa.map( (row, index) => {
+            table += '<tr key={index}><td>' + row.q + '</td><td>' + row.a + '</td></tr>';
+        });
 
-            let table = '';
-            
-            req.body.qa.map( (row, index) => {
-                var acc = '';
-                //row.a.map((o)=>{acc+=','+o})
-                table += '<tr key={index}><td>' + row.q + '</td><td>' + row.a + '</td></tr>';
-                //console.log('table',table);
-            });
+        console.log(req.body.qa);
 
-            console.log('req.body.qa',req.body.qa);
-            
-            const msg = {
-                //to: 'benoit.bellefontaine@canada.ca',
-                to: 'consultantspmeoutaouais@gmail.com',
-                //to: 'benoit.bellefontaine@gmail.com',
-                from: 'noreply@consultantspmeoutaouais.ca', 
-                subject: 'Courriel du site consultantspmeoutaouais.ca',
-                text: 'nom source: ' + req.body.name + '\nadresse courriel source: ' + req.body.email + 
-                '\ntexte source: ' + req.body.text,
-                html: 
-                    '<head><style>td,th{padding:5px;border-bottom:1px solid #ddd;}' + 
-                    'tr:hover {background-color: #f5f5f5;}</style></head>' +
-                    '<body><div style="width:1000%;margin:0 auto">' +
-                        '<table>' +
-                        '<tr><td style="border-right:1px solid #f5f5f5"><strong>nom:</strong></td><td>' + req.body.name + '</td></tr>' +
-                        '<tr><td style="border-right:1px solid #f5f5f5"><strong>adresse courriel:</strong></td><td>' + req.body.email + '</td></tr>' +
-                        '<tr><td style="border-right:1px solid #f5f5f5"><strong>téléphone:</strong></td><td>' + req.body.tel + '</td></tr>' +
-                        '<tr><td style="border-right:1px solid #f5f5f5"><strong>message:</strong></td><td>'+ req.body.text + '</td></tr>' +
-                        '</table></div><hr/>' +
-                        '<div style="width:100%;text-align:left"><table><tr><th>Questions</th><th>Réponses</th></tr>' + table + '</table></div>' +
-                    '</div></body>'
-            };
-            sgMail.send(msg, function(err, json) {
-                if (err) { 
-                    console.log('error sending email');
-                    return res.send('error sending email'); 
-                }
-                console.log('email sent successfully to ' + msg.to);
-                //res.send('email sent successfully to ' + msg.to);
-            });
+        const msg = {
+            to: 'benoit.bellefontaine@gmail.com',
+            from: 'noreply@consultantspmeoutaouais.ca',
+            subject: 'Courriel du site consultantspmeoutaouais.ca',
+            text: 'nom source: ' + req.body.name + '\nadresse courriel source: ' + req.body.email + 
+            '\ntexte source: ' + req.body.text,
+            html: 
+                '<head><style>td,th{padding:5px;border-bottom:1px solid #ddd;}' + 
+                'tr:hover {background-color: #f5f5f5;}</style></head>' +
+                '<body><div style="width:1000%;margin:0 auto">' +
+                    '<table>' +
+                    '<tr><td style="border-right:1px solid #f5f5f5"><strong>nom:</strong></td><td>' + req.body.name + '</td></tr>' +
+                    '<tr><td style="border-right:1px solid #f5f5f5"><strong>adresse courriel:</strong></td><td>' + req.body.email + '</td></tr>' +
+                    '<tr><td style="border-right:1px solid #f5f5f5"><strong>téléphone:</strong></td><td>' + req.body.tel + '</td></tr>' +
+                    '<tr><td style="border-right:1px solid #f5f5f5"><strong>message:</strong></td><td>'+ req.body.text + '</td></tr>' +
+                    '</table></div><hr/>' +
+                    '<div style="width:100%;text-align:left"><table><tr><th>Questions</th><th>Réponses</th></tr>' + table + '</table></div>' +
+                '</div></body>'
+        };
 
-            console.log('verification successful');
-            return res.json({'success':true,'msg':'Captcha passed'});
-
-        })
+        sgMail.send(msg, function(err, json) {
+            if (err) { 
+                console.log('error ',err);
+                console.log('error sending email');
+                return res.send('error sending email'); 
+            }
+            console.log('email sent successfully to ' + msg.to);
+            res.send('email sent successfully to ' + msg.to);
+        });
         
+        /*const msg = {
+            to: 'benoit.bellefontaine@gmail.com',
+            from: 'benoit.bellefontaine@gmail.com',
+            subject: 'Sending with Twilio SendGrid is Fun',
+            text: 'and easy to do anywhere, even with Node.js',
+            html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+        };
+        sgMail.send(msg, function(err, json) {
+            if (err) { 
+                console.log('error ',err);
+                console.log('error sending email');
+                return res.send('error sending email'); 
+            }
+            console.log('email sent successfully to ' + msg.to);
+            res.send('email sent successfully to ' + msg.to);
+        });*/
+    
+        /*///////// END - sendgrid ///////////*/
+
     });
     
 //Use our router configuration when we call /api
 app.use('/api', router);
-
-// This will handle 404 requests.
-app.use("*",function(req,res) {
-  res.status(404).sendFile(__dirname + '/public/404.html');
-})
 
 //starts the server and listens for requests
 app.listen(port, function() {
