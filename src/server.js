@@ -11,7 +11,7 @@ var router = express.Router();
 const sgMail = require('@sendgrid/mail');
 //var user = 'consultantspmeoutaouais';
 //var password = 'Be473918$';
-var key = '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';
+var key = '';
 sgMail.setApiKey(key);
 
 //set our port to either a predetermined port number if you have set 
