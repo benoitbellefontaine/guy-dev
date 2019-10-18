@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var user = 'consultantspmeoutaouais';
 var password = 'Be473918$';
-var key = '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';
+var key = '';
 
 //and create our instances
 var app = express();
