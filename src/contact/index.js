@@ -10,6 +10,7 @@ import Chiffres from './chiffres.js';
 import Defis    from './defis.js';
 import Name    from './name';
 import Address    from './address';
+import Message    from './message';
 
 import './contact.css';
 import './customscrollbars.css';
@@ -93,7 +94,7 @@ const pages = [
         <animated.div className="contact-box" style={{ ...style, display:'flex', height:'100%', width:'100%', padding:'20px',
             fontSize:"4vmin", lineHeight:"4vmin" }}>
             { true ? questions[8] : questions_a[8] }
-            <div className="inner-contact-box" style={{width:'100%',height:'100%'}}> <textarea style={{height:'98%'}}/> </div>
+            <Message />
         </animated.div>,
 ]
 
@@ -158,7 +159,6 @@ const Contact = (props) => {
 
         // aggregate
         var qa = [
-            //{q:'services',  a: services},
             {q:'secteurs',  a: secteurs},
             {q:'cycle',     a: cycles},
             {q:'qualites',  a: qualites},
@@ -172,7 +172,7 @@ const Contact = (props) => {
                 id:     Date.now(), 
                 name:   store.getState().name.texte,  
                 email:  store.getState().address.texte,
-                //text:   this.state.message, 
+                message:store.getState().message.texte,
                 qa:     qa,
                 //captcha:this.state.value
             },
@@ -196,7 +196,6 @@ const Contact = (props) => {
 
     return (
         <div className="contact-page" style={{backgroundColor: '#3da30088'}}>
-
             {
                 (index >= 0) && (index < pages.length) &&
                 <nav className="fs-nav-dots">
@@ -223,7 +222,7 @@ const Contact = (props) => {
             <button className="fs-continue" onClick={onClick}>
                 Continue
             </button>
-            <button className="fs-Submit" onClick={handleMailSubmitLocalServer}>
+            <button className="fs-submit" onClick={handleMailSubmitLocalServer}>
                Submit
             </button>
 
@@ -273,4 +272,4 @@ const Contact = (props) => {
         </div>
     );
 }
-export default Contact
+export default Contact;

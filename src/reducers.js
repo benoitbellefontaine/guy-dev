@@ -95,10 +95,10 @@ const initialState = {
     },
     name: {texte:''},
     address: {texte:''},
-    questions: {text:''},
+    message: {texte:''},
     services: [
         // DEMARRAGE
-        { id:1, text: "structure d'entreprise",                cycles: ["demarrage"], completed:false },
+        { id:1, text: "structure d'entreprise",                cycles: ["demarrage"], completed:true },
         { id:2, text: "incorporation",                         cycles: ["demarrage"], completed:false },
         { id:3, text: "plan d'affaire",                        cycles: ["demarrage"], completed:false },
         { id:4, text: "plan comptable",                        cycles: ["demarrage"], completed:false },
@@ -158,63 +158,63 @@ const initialState = {
         },
     ],
     secteurs: [
-        {   id:1, text: "Administrations publiques",selected: false},
-        {   id:2, text: "Agriculture, foresterie, pêche et chasse", selected: false },
-        {   id:3, text: "Arts, spectacles et loisirs", selected: false },
-        {   id:4, text: "Autres services (sauf les administrations publiques)", selected: false },
-        {   id:5, text: "Commerce de détail", selected: false },
-        {   id:6, text: "Commerce de gros", selected: false },
-        {   id:7, text: "Construction", selected: false },
-        {   id:8, text: "Extraction minière, exploitation en carrière, et extraction de pétrole et de gaz", selected: false },
-        {   id:9, text: "Fabrication", selected: false },
-        {   id:10,text: "Finance et assurances", selected: false },
-        {   id:11,text: "Gestion de sociétés et d’entreprises", selected: false },
-        {   id:12,text: "Hébergement et services de restauration", selected: false },
-        {   id:13,text: "Industrie de l’information et industrie culturelle", selected: false},
-        {   id:14,text: "Services administratifs, services de soutien, services de gestion des déchets et services d’assainissement", selected: false},
-        {   id:15, text: "Services d’enseignement", selected: false},
-        {   id:16, text: "Services de restauration et débit de boisson", selected: false },
-        {   id:17, text: "Services immobiliers et services de location et de location à bail", selected: false },
-        {   id:18, text: "Services professionnels, scientifiques et techniques", selected: false },
-        {   id:19, text: "Services publics", selected: false },
-        {   id:20, text: "Soins de santé et assistance sociale", selected: false },
-        {   id:21, text: "Transport et entreposage, transport par camion", selected: false },
+        {   id:1, texte: "Administrations publiques",text: "Public administration",selected: true},
+        {   id:2, texte: "Agriculture, foresterie, pêche et chasse", text: "Agriculture, forestry, fishing and hunting", selected: false },
+        {   id:3, texte: "Arts, spectacles et loisirs", text: "Arts, entertainment and recreation", selected: false },
+        {   id:4, texte: "Autres services (sauf les administrations publiques)", text: "Other services (except public administration)", selected: false },
+        {   id:5, texte: "Commerce de détail", text: "Retail trade", selected: false },
+        {   id:6, texte: "Commerce de gros",  text: "Wholesale trade", selected: false },
+        {   id:7, texte: "Construction",  text: "Construction", selected: false },
+        {   id:8, texte: "Extraction minière, exploitation en carrière, et extraction de pétrole et de gaz", text: "Mining, quarrying, and oil and gas extraction", selected: false },
+        {   id:9, texte: "Fabrication", text: "Manufacturing", selected: false },
+        {   id:10,texte: "Finance et assurances", text: "Finance and insurance", selected: false },
+        {   id:11,texte: "Gestion de sociétés et d’entreprises", text: "Management of companies and enterprises", selected: false },
+        {   id:12,texte: "Hébergement et services de restauration", text: "Accommodation and food services", selected: false },
+        {   id:13,texte: "Industrie de l’information et industrie culturelle", text: "Information and cultural industries", selected: false},
+        {   id:14,texte: "Services administratifs, services de soutien, services de gestion des déchets et services d’assainissement", text: "Administrative and support services, waste management and remediation services", selected: false},
+        {   id:15, texte: "Services d’enseignement", text: "Educational services", selected: false},
+        {   id:16, texte: "Services de restauration et débit de boisson", text: "Food and beverage services and pubs", selected: false },
+        {   id:17, texte: "Services immobiliers et services de location et de location à bail", text: "Real estate and rental and leasing services", selected: false },
+        {   id:18, texte: "Services professionnels, scientifiques et techniques", text: "Professional, scientific and technical services", selected: false },
+        {   id:19, texte: "Services publics", text: "Public services", selected: false },
+        {   id:20, texte: "Soins de santé et assistance sociale", text: "Health care and social assistance", selected: false },
+        {   id:21, texte: "Transport et entreposage, transport par camion", text: "Transport and storage, truck transport", selected: false },
     ],
     cycles: [
-        {   id:1, texte: "Démarrage",text: "Startup",selected: false},
+        {   id:1, texte: "Démarrage",text: "Startup",selected: true},
         {   id:2, texte: "Court terme",text: "Short Term", selected: false },
         {   id:3, texte: "Moyen terme",text: "Middle Term", selected: false },
         {   id:4, texte: "Excellence",text: "Excellence", selected: false },
         {   id:5, texte: "Redressement",text: "Re-engineering", selected: false },
     ],
     qualites: [
-        {   id:1, text: "Expérience - le consultant externe ajoute sa vaste expérience à notre équipe",selected: false},
-        {   id:2, text: "Impartialité - le consultant externe apporte une vue non-biaisée de la situation", selected: false },
-        {   id:3, text: "Compétence - le consultant externe possède une expertise que notre entreprise a besoin", selected: false },
-        {   id:4, text: "Réseau - mise à profit du réseau de contact du consultant externe", selected: false },
-        {   id:5, text: "Confiance - inspirer, insuffler une plus grande confiance à notre équipe", selected: false },
-        {   id:6, text: "Confirmation - le consultant externe nous aide à confirmer notre démarche et nos objectifs", selected: false },
-        {   id:7, text: "Proximité culturelle et géographique - le consultant externe est conscient de la réalité et des problèmes que nous rencontrons", selected: false },
+        {   id:1, texte: "Expérience - le consultant externe ajoute sa vaste expérience à notre équipe", text: "Experience - the external consultant adds his or her extensive experience to our team",selected: false},
+        {   id:2, texte: "Impartialité - le consultant externe apporte une vue non-biaisée de la situation", text: "Impartiality - the external consultant provides an unbiased view of the situation", selected: false },
+        {   id:3, texte: "Compétence - le consultant externe possède une expertise que notre entreprise a besoin", text: "Competence - the external consultant has the expertise that our company needs", selected: false },
+        {   id:4, texte: "Réseau - mise à profit du réseau de contact du consultant externe", text: "Network - leveraging the external consultant's contact network", selected: false },
+        {   id:5, texte: "Confiance - inspirer, insuffler une plus grande confiance à notre équipe", text: "Trust - inspire, instill greater trust in our team", selected: false },
+        {   id:6, texte: "Confirmation - le consultant externe nous aide à confirmer notre démarche et nos objectifs", text: "Confirmation - the external consultant helps us to confirm our approach and objectivess", selected: false },
+        {   id:7, texte: "Proximité culturelle et géographique - le consultant externe est conscient de la réalité et des problèmes que nous rencontrons", text: "Cultural and geographical proximity - the external consultant is aware of the reality and problems we face", selected: false },
     ],
     chiffres: [
-        { id:1, text: "moins de $100000", selected: false },
-        { id:2, text: "entre $100000 et $500000", selected: false },
-        { id:3, text: "entre $500000 et $1000000", selected: false },
-        { id:4, text: "entre $1,000,000 et $10,000,000", selected: false },
-        { id:5, text: "plus de $10,000,000", selected: false },
+        { id:1, texte: "moins de $100000", text: "less than $100000", selected: false },
+        { id:2, texte: "entre $100000 et $500000", text: "between $100000 and $500000", selected: false },
+        { id:3, texte: "entre $500000 et $1000000", text: "between $500000 and $1000000", selected: false },
+        { id:4, texte: "entre $1,000,000 et $10,000,000", text: "between $1,000,000 and $10,000,000", selected: false },
+        { id:5, texte: "plus de $10,000,000",text: "more than $10,000,000", selected: false },
     ],
     defis: [
-        { id:1, text: "augmenter nos ventes", selected: false },
-        { id:2, text: "réduire nos coûts", selected: false },
-        { id:3, text: "manque de structure", selected: false },
-        { id:4, text: "gestion des ressources humaines", selected: false },
-        { id:5, text: "manque de planification", selected: false },
-        { id:6, text: "manque d'outils", selected: false },
-        { id:7, text: "manque de financement", selected: false },
-        { id:8, text: "manque de rentabilité et d'efficacité", selected: false },
-        { id:9, text: "acquérir des outils d'analyse", selected: false },
-        { id:10, text: "acquérir une vision à long terme", selected: false },
-        { id:11, text: "procéder à un redressement", selected: false },
+        { id:1, texte: "augmenter nos ventes", text: "increase our sales", selected: false },
+        { id:2, texte: "réduire nos coûts", text: "reduce our costs", selected: false },
+        { id:3, texte: "manque de structure", text: "lack of structure", selected: false },
+        { id:4, texte: "gestion des ressources humaines", text: "human resources management", selected: false },
+        { id:5, texte: "manque de planification", text: "lack of planning", selected: false },
+        { id:6, texte: "manque d'outils et d'expertise", text: "lack of tools and expertise", selected: false },
+        { id:7, texte: "manque de financement", text: "lack of funding", selected: false },
+        { id:8, texte: "manque de rentabilité et d'efficacité", text: "lack of profitability and efficiency", selected: false },
+        { id:9, texte: "acquérir des outils d'analyse", text: "acquire analytical tools", selected: false },
+        { id:10, texte: "acquérir une vision à long terme", text: "acquire a long-term vision", selected: false },
+        { id:11, texte: "procéder à un redressement", text: "reengineer", selected: false },
     ]
 }
 
@@ -268,6 +268,18 @@ const name = ( state = initialState.name, action ) => {
 const address = ( state = initialState.address, action ) => {
     switch (action.type) {
         case 'ADDRESS_CHANGE':
+            return {
+                ...state,
+                texte: action.texte,
+            };
+        default:
+            return state
+    }
+}
+
+const message = ( state = initialState.message, action ) => {
+    switch (action.type) {
+        case 'MESSAGE_CHANGE':
             return {
                 ...state,
                 texte: action.texte,
@@ -392,6 +404,7 @@ const reducers = combineReducers({
     //form elements
     name,
     address,
+    message,
 })
 
 export default reducers;

@@ -6,18 +6,48 @@ import { useSpring, useTransition, animated } from 'react-spring';
 import './cycles.css';
 
 const textSlides = [
-    { id: 0, url: 'photo-1496395031280-4201b0e022ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', time:3000, text:'Traçons un graphique' },
-    { id: 1, url: 'photo-1544572571-ab94fd872ce4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1534&q=80', time:40000, text:'avec vos objectifs en fonction du temps' },
-    { id: 2, url: 'photo-1495870043034-74e1a009f631?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60', time:3000, text:'disons que vos objectifs sont des revenus' },
-    { id: 3, url: 'photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80', time:3500, text:'et le temps est partitionné en cycles de vie' },
-    { id: 4, url: 'photo-1483104879057-379b6c2fe5a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', time:3000, text:'traçons maintenant la courbe de cycle de vie' },
-    { id: 5, url: 'photo-1507149677524-254e3ebb240f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', time:3000, text:'avec des points pour chaque cycle' },
-    { id: 6, url: 'photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', time:3500, text:'certains disent que nul n\'y échappe' },
-    { id: 7, url: 'photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80', time:4000, text:'par contre en observant attentivement les données' },
-    { id: 8, url: 'photo-1444927714506-8492d94b4e3d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', time:4000, text:'et en appliquant des méthodes rigoureuses' },
-    { id: 10, url: 'photo-1544572571-ab94fd872ce4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1534&q=80', time:4000, text:'on peut certainement arriver à la redresser' },
-    { id: 11, url: 'photo-1495870043034-74e1a009f631?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60', time:4500, text:'et remettre votre entreprise sur la voie du succès' },
+    { id: 0, url: 'photo-1496395031280-4201b0e022ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', time:3000, texte:'Traçons un graphique', text:"Let's draw a graph" },
+    { id: 1, url: 'photo-1544572571-ab94fd872ce4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1534&q=80', time:40000, texte:'avec vos objectifs en fonction du temps', text:'with your onjectives on the Y axis and time on a X axis' },
+    { id: 2, url: 'photo-1495870043034-74e1a009f631?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60', time:3000, texte:'disons que vos objectifs sont des revenus', text:"let's say your objectives are revenues" },
+    { id: 3, url: 'photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80', time:3500, texte:'et le temps est partitionné en cycles de vie', text:'and time is partioned in life cycles' },
+    { id: 4, url: 'photo-1483104879057-379b6c2fe5a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', time:3000, texte:'traçons maintenant la courbe de cycle de vie', text:"now let's draw the lifecycle curve" },
+    { id: 5, url: 'photo-1507149677524-254e3ebb240f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', time:3000, texte:'avec des points pour chaque cycle', text:"with colored dots for each cycle" },
+    { id: 6, url: 'photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', time:3500, texte:'certains disent que nul n\'y échappe', text:"some say there is no escape from it" },
+    { id: 7, url: 'photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80', time:4000, texte:'par contre en observant attentivement les données', text:"but by closely observing business data" },
+    { id: 8, url: 'photo-1444927714506-8492d94b4e3d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', time:4000, texte:'et en appliquant des méthodes rigoureuses', text:'and apply straightforward methods' },
+    { id: 10, url: 'photo-1544572571-ab94fd872ce4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1534&q=80', time:4000, texte:'on peut certainement arriver à la redresser', text:"we can certainly change the curvature" },
+    { id: 11, url: 'photo-1495870043034-74e1a009f631?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60', time:4500, texte:'et remettre votre entreprise sur la voie du succès', text:"and put your enterprise back on the road to success" },
 ];
+
+/*
+const tF = [
+    { id: 0, texte:'Traçons un graphique' },
+    { id: 1, texte:'avec vos objectifs en fonction du temps' },
+    { id: 2, texte:'disons que vos objectifs sont des revenus' },
+    { id: 4, texte:'et le temps est partitionné en cycles de vie' },
+    { id: 5,texte:'traçons maintenant la courbe de cycle de vie' },
+    { id: 6,texte:'avec des points pour chaque cycle' },
+    { id: 7,texte:'certains disent que nul n\'y échappe' },
+    { id: 8,texte:'par contre en observant attentivement les données' },
+    { id: 9,texte:'et en appliquant des méthodes rigoureuses' },
+    { id: 10,texte:'on peut certainement arriver à la redresser' },
+    { id: 11,texte:'et remettre votre entreprise sur la voie du succès' },
+];
+
+const tE = [
+    { id: 1,text:"Let's draw a graph" },
+    { id: 2,text:'with your onjectives on the Y axis and time on a X axis' },
+    { id: 3,text:"let's say your objectives are revenues" },
+    { id: 4,text:'and time is partioned in life cycles' },
+    { id: 5,text:"now let's draw the lifecycle curve" },
+    { id: 6,text:"with colored dots for each cycle" },
+    { id: 7,text:"some say there is no escape from it" },
+    { id: 8,text:"but by closely observing business data" },
+    { id: 9,text:'and apply straightforward methods' },
+    { id: 10,text:"we can certainly change the curvature" },
+    { id: 11,text:"and put your enterprise back on the road to success" },
+];
+*/
 
 const config = { mass: 5, tension: 2000, friction: 200 };
 
@@ -102,11 +132,11 @@ const Cycles = (props) => {
     useEffect(() => { 
         var refreshIntervalId = setInterval(() => set(state => (state + 1) % textSlides.length), 3000);
         setTimeout(  () => clearInterval(refreshIntervalId), 30000);
-    }, [])
+    }, [props.language])
     useEffect(() => {
         d3.select('.viz > *').remove();
         draw(props);
-    }, []);
+    }, [props.language]);
     // react-spring hooks
     const transitions = useTransition(textSlides[index], item => item.id, {
         from: { opacity: 0 },
@@ -114,6 +144,7 @@ const Cycles = (props) => {
         leave: { opacity: 0 },
         config: config.molasses,
     })
+    
     return (
         <div className='cycles-page'>
             <div style={{ 
@@ -135,7 +166,6 @@ const Cycles = (props) => {
                         transitions.map(({ item, props, key }) => (
                             <animated.div
                                 key={key}
-                                
                                 //style={{ ...props, backgroundImage: `url(https://images.unsplash.com/${item.url}&auto=format&fit=crop)`,
                                 //    display:'flex', alignItems:'center', justifyContent:'center' }}
                                 //style={{ ...props, backgroundImage: `url(https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)`,
@@ -145,7 +175,7 @@ const Cycles = (props) => {
                                 style={{ ...props, position: 'absolute' }}
                                 //
                                 >
-                                <div style={{fontSize:'4vmin',color:'white',padding:10,backgroundColor:'rgba(0,0,0,0.4)'}}>{item.text}</div>
+                                <div style={{fontSize:'4vmin',color:'white',padding:10,backgroundColor:'rgba(0,0,0,0.4)'}}>{props.language ? item.texte : item.text}</div>
                             </animated.div>
                         ))
                     }
@@ -336,7 +366,7 @@ const draw = (props) => {
                     .attr('font-size', "14px")
                     .attr('font-weight', "700")
                     .attr("fill", function(d,i) { return color((i)); })
-                    .text(function(d) {return d.nom;})
+                    .text(function(d) {return props.language ? d.nom : d.name;})
                     .style("opacity",1)
     
             setTimeout(barsLC,3000);

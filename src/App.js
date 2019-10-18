@@ -59,10 +59,9 @@ function App() {
         </div>
 
         <div style={{display:'flex'}}>
-          <Link to='/cycles'><i className="fas fa-bicycle fa-lg" style={{margin:'0 5px 0 0'}}></i> Cycles</Link>
+          <Link to='/cycles'><i className="fas fa-bicycle fa-lg" style={{margin:'0 5px 0 0'}}></i> { language ? 'Cycles' : 'Lifecycles' } </Link>
           <Link to='/tree'><i className="fas fa-cogs fa-lg" style={{margin:'0 5px 0 0'}}></i> Services</Link>
           <Link to='/contact'><i className="fas fa-phone fa-lg" style={{margin:'0 5px 0 0'}}></i> Contact</Link>
-          <Link to='/urt'><i className="fas fa-settings fa-lg" style={{margin:'0 5px 0 0'}}></i> URT</Link>
           <div onClick={()=>setLanguage(state=>!state)}>{ (language) ? 'Fr' : 'En' }</div>
         </div>
         
@@ -83,11 +82,11 @@ function App() {
           {transitions.map(({ item, props, key }) => (
             <animated.div key={key} style={props}>
               <Switch location={item}>
-                <Route path="/" exact render={(props) => <Main {...props}
+                <Route path="/" exact render={(props) => <Main {...props} language={language}
                   width={size.width} height={size.height} />}/>
                 <Route path="/showcase" render={(props) => <Header {...props}
                   width={size.width} height={size.height} />}/>
-                <Route path="/main" render={(props) => <Main {...props}
+                <Route path="/main" render={(props) => <Main {...props} language={language}
                   width={size.width} height={size.height} />}/>
                 <Route path="/three" render={(props) => <Header {...props}
                   width={size.width} height={size.height} />}/>
@@ -95,7 +94,7 @@ function App() {
                   width={size.width*80/100} height={size.height*80/100} />}/>
                 <Route path="/tree" render={(props) => <Tree items={data} {...props} 
                   width={size.width*80/100} height={size.height*70/100} margin={margin} />}/>
-                <Route path="/cycles" render={(props) => <Cycles {...props} 
+                <Route path="/cycles" render={(props) => <Cycles {...props} language={language}
                     width={size.width*100/100} height={size.height*70/100} margin={margin} />}/>
                 <Route path="/recaptcha" render={(props) => <Recaptcha {...props} 
                     width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
