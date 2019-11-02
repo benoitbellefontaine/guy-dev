@@ -5,6 +5,7 @@
   font-size: 1vmin;
   color: #2c3e50;
   z-index: 1;
+  background: #F5F5F5;
 }
 
 .App-menubar {
@@ -20,17 +21,10 @@
 .App-section {
   height:100vh;
   display: flex;
-  /*flex-direction: column;*/
   align-items: center;
   justify-content: center;
   will-change: transform, opacity;
   font-size: calc(10px + 2vmin);
-  /*
-  background: -webkit-linear-gradient(left, #bdc3c7, #2c3e50);
-  background: -moz-linear-gradient(left, #bdc3c7, #2c3e50);
-  background: -o-linear-gradient(left, #bdc3c7, #2c3e50);
-  background: linear-gradient(to right, #bdc3c7, #2c3e50); 
-  */
 }
 
 @keyframes App-logo-spin {
@@ -82,7 +76,7 @@
 }
 
 header > div > a {
-  background: #ffffff;
+  background: #F5F5F5;
   font-size: 2vmin;
   padding: 1vmin;
   margin: 0.5vmin;
@@ -97,7 +91,7 @@ header > div > a {
 
 header > div > a:nth-child(1) {
   color: #8f3d3d;
-  background: #ffffff;
+  background: #F5F5F5;
   font-size: 2vmin;
   padding: 1vmin;
   margin: 0.5vmin;
@@ -105,7 +99,7 @@ header > div > a:nth-child(1) {
 
 header > div > a:nth-child(2) {
   color: #45c8d9;
-  background: #ffffff;
+  background: #F5F5F5;
   font-size: 2vmin;
   padding: 1vmin;
   margin: 0.5vmin;
@@ -113,7 +107,7 @@ header > div > a:nth-child(2) {
 
 header > div > a:nth-child(3) {
   color: #3da300;
-  background: #ffffff;
+  background: #F5F5F5;
   font-size: 2vmin;
   padding: 1vmin;
   margin: 0.5vmin;
@@ -121,12 +115,16 @@ header > div > a:nth-child(3) {
 
 header > div > a:hover {
   text-decoration: none;
-  /*border: 1px solid #aaaaaa;*/
+  background: #FFFFFF;
   /*-webkit-box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.75);*/
-  box-shadow: 2px 2px 8px 2px rgba(240,240,240,0.81), -2px -2px 8px 2px rgba(240,240,240,0.81);
-  transition: box-shadow 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+  box-shadow: 2px 2px 16px 2px rgba(220,220,220,1), -2px -2px 16px 2px rgba(220,220,220,1);
+  transition: box-shadow 0.75s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+
+header > div > a:focus { 
+  background-color: orange; 
+} 
 
 .buttons {
   isolation: isolate;
@@ -181,7 +179,7 @@ button::before, button::after {
 .center {
   background: none;
   border: 0;
-  color: #e9edf1;
+  color: #878e96;
   font-weight: 700;
   position: relative;
 }
@@ -238,13 +236,13 @@ button::before, button::after {
   height: 100%;
 }
 .draw:hover::before {
-  border-top-color: #e9edf1;
-  border-right-color: #e9edf1;
+  border-top-color: #7e96af;
+  border-right-color: #7e96af;
   transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
 }
 .draw:hover::after {
-  border-bottom-color: #e9edf1;
-  border-left-color: #e9edf1;
+  border-bottom-color: #7e96af;
+  border-left-color: #7e96af;
   transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
 }
 
@@ -260,14 +258,14 @@ button::before, button::after {
           transform-origin: center;
 }
 .center::before {
-  border-top: 2px solid #e9edf1;
-  border-bottom: 2px solid #e9edf1;
+  border-top: 2px solid #7e96af;
+  border-bottom: 2px solid #7e96af;
   -webkit-transform: scale3d(0, 1, 1);
           transform: scale3d(0, 1, 1);
 }
 .center::after {
-  border-left: 2px solid #e9edf1;
-  border-right: 2px solid #e9edf1;
+  border-left: 2px solid #7e96af;
+  border-right: 2px solid #7e96af;
   -webkit-transform: scale3d(1, 0, 1);
           transform: scale3d(1, 0, 1);
 }

@@ -16,7 +16,6 @@ import data from './tree/data';
 import Header from './three/header';
 import Recaptcha from './recaptcha';
 import Contact from './contact';
-import URT from './usereducertest';
 
 
 function useWindowWidth() {
@@ -48,20 +47,52 @@ function App() {
   const [open, setOpen] = useState(false);
   const [language, setLanguage] = useState(true);
 
+  const changeColor = (event) => {
+    var parent = event.target.parentElement;
+    console.log("parent :",parent.childNodes.length);
+    [].forEach.call(parent.childNodes, function(child) {
+      console.log("child :",child);
+      child.style.background = "#F5F5F5";
+      child.style.boxShadow = "none";
+    });
+    console.log(event.target);
+    event.target.style.background = "white";
+    event.target.style.boxShadow = "2px 2px 10px 2px rgba(230,230,230,1), -2px -2px 10px 2px rgba(230,230,230,1)";
+  }
+
+  const handleClick = (event) => {
+    var anchors = document.getElementById("anchors");
+    [].forEach.call(anchors.childNodes, function(child) {
+      console.log("child :",child);
+      child.style.background = "#F5F5F5";
+      child.style.boxShadow = "none";
+    });
+    /*console.log("parent :",parent.childNodes.length);
+    [].forEach.call(parent.childNodes, function(child) {
+      console.log("child :",child);
+      child.style.background = "#F5F5F5";
+      child.style.boxShadow = "none";
+    });
+    console.log(event.target);
+    event.target.style.background = "white";
+    event.target.style.boxShadow = "2px 2px 10px 2px rgba(230,230,230,1), -2px -2px 10px 2px rgba(230,230,230,1)";*/
+  }
+
   return (
 
     <div className="App" style={{overflowX:'hidden'}}>
 
-      <header className="App-header" style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center',justifyContent:'space-between'}}>
+      <header className="App-header" 
+        style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center',justifyContent:'space-between'}}>
         
         <div className="buttons">
-          <button className="center"><Link style={{color:'#888888',textDecoration:'none',zIndex:1}} to='/main'>Consultants PME Outaouais</Link></button>
+          <button className="center" onClick={handleClick}><Link style={{color:'#888888',textDecoration:'none',zIndex:1}} to='/main'>ACME</Link></button>
         </div>
 
-        <div style={{display:'flex'}}>
-          <Link to='/cycles'><i className="fas fa-bicycle fa-lg" style={{margin:'0 5px 0 0'}}></i> { language ? 'Cycles' : 'Lifecycles' } </Link>
-          <Link to='/tree'><i className="fas fa-cogs fa-lg" style={{margin:'0 5px 0 0'}}></i> Services</Link>
-          <Link to='/contact'><i className="fas fa-phone fa-lg" style={{margin:'0 5px 0 0'}}></i> Contact</Link>
+        <div id="anchors" style={{display:'flex'}}>
+          <Link to='/cycles' onClick={changeColor}><i className="fas fa-bicycle fa-lg" style={{margin:'0 5px 0 0'}}></i> { language ? 'Cycles' : 'Lifecycles' } </Link>
+          <Link to='/tree' onClick={changeColor}><i className="fas fa-cogs fa-lg" style={{margin:'0 5px 0 0'}}></i> Services</Link>
+          <Link to='/contact' onClick={changeColor}><i className="fas fa-phone fa-lg" style={{margin:'0 5px 0 0'}}></i> Contact</Link>
           <div onClick={()=>setLanguage(state=>!state)}>{ (language) ? 'Fr' : 'En' }</div>
         </div>
         
@@ -97,8 +128,6 @@ function App() {
                 <Route path="/cycles" render={(props) => <Cycles {...props} language={language}
                     width={size.width*100/100} height={size.height*70/100} margin={margin} />}/>
                 <Route path="/recaptcha" render={(props) => <Recaptcha {...props} 
-                    width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
-                <Route path="/urt" render={(props) => <URT {...props} initialCount={0}
                     width={size.width*70/100} height={size.height*70/100} margin={margin} />}/>
               </Switch>
             </animated.div>
